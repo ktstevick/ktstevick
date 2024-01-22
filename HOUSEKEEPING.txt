@@ -1,0 +1,5 @@
+HOUSEKEEPING -
+
+This is more of a personal note to help me keep track of this repo and organize my own thoughts/projects.
+
+First thing's first - I'm going to test the connection and make sure I can git push to ktstevick in the first place!
