@@ -13,3 +13,13 @@ Now, I'm going to add a personal project with no git history.
 So far so good. Porting over other projects first, then moving to the next stage.
 
 I'll HAVE to go back and tidy up some of these projects of course (some comments are a little unnecessary, to say the least), but right now I'm just trying to establish board presence.
+
+Now that I'm getting a good look at things, these first projects are heavily tutorial/existing game inspired. I think it makes sense to have separate folders, and a README for each?
+
+Personal: projects for learning new concepts on the side
+
+Capstone: more professional team projects from Tech Elevator
+
+Website: for my website itself once it's live
+
+I think Website should be separate, since I'll probably make a few others to show off vue concepts and ideas. Not today though!
