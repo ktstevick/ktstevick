@@ -1,5 +1,7 @@
 HOUSEKEEPING -
 
+1/22/24
+
 This is more of a personal note to help me keep track of this repo and organize my own thoughts/projects.
 
 Looks like we're in there. It seems to be authenticating through my browser at the moment, which isn't a huge deal.
@@ -7,3 +9,7 @@ Looks like we're in there. It seems to be authenticating through my browser at t
 I'll have to provide Terminal with the access code at some point, but that's hardly a priority.
 
 Now, I'm going to add a personal project with no git history.
+
+So far so good. Porting over other projects first, then moving to the next stage.
+
+I'll HAVE to go back and tidy up some of these projects of course (some comments are a little unnecessary, to say the least), but right now I'm just trying to establish board presence.
