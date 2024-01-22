@@ -1,0 +1,166 @@
+0001|Pound|40|Normal|Physical
+0002|Karate Chop|50|Fighting|Physical
+0003|Double Slap|30|Normal|Physical
+0004|Comet Punch|90|Normal|Physical
+0005|Mega Punch|80|Normal|Physical
+0006|Pay Day|40|Normal|Physical
+0007|Fire Punch|75|Fire|Physical
+0008|Ice Punch|75|Ice|Physical
+0009|Thunder Punch|75|Electric|Physical
+0010|Scratch|40|Normal|Physical
+0011|Vise Grip|55|Normal|Physical
+0012|Guillotine|0|Normal|Physical
+0013|Razor Wind|80|Normal|Special
+0014|Swords Dance|0|Normal|Status
+0015|Cut|50|Normal|Physical
+0016|Gust|40|Flying|Special
+0017|Wing Attack|60|Flying|Physical
+0018|Whirlwind|0|Flying|Status
+0019|Fly|90|Flying|Physical
+0020|Bind|15|Normal|Physical
+0021|Slam|80|Normal|Physical
+0022|Vine Whip|45|Grass|Physical
+0023|Stomp|65|Normal|Physical
+0024|Double Kick|60|Fighting|Physical
+0025|Mega Kick|120|Normal|Physical
+0026|Jump Kick|100|Fighting|Physical
+0027|Rolling Kick|60|Fighting|Physical
+0028|Sand Attack|0|Ground|Status
+0029|Headbutt|70|Normal|Physical
+0030|Horn Attack|65|Normal|Physical
+0031|Fury Attack|75|Normal|Physical
+0032|Horn Drill|0|Normal|Physical
+0033|Tackle|40|Normal|Physical
+0034|Body Slam|85|Normal|Physical
+0035|Wrap|15|Normal|Physical
+0036|Take Down|90|Normal|Physical
+0037|Thrash|120|Normal|Physical
+0038|Double Edge|120|Normal|Physical
+0039|Tail Whip|0|Normal|Status
+0040|Poison String|15|Poison|Physical
+0041|Twineedle|50|Bug|Physical
+0042|Pin Missile|125|Bug|Physical
+0043|Leer|0|Normal|Status
+0044|Bite|60|Dark|Physical
+0045|Growl|0|Normal|Status
+0046|Roar|0|Normal|Status
+0047|Sing|0|Normal|Status
+0048|Supersonic|0|Normal|Status
+0049|Sonic Boom|20|Normal|Special
+0050|Disable|0|Normal|Status
+0051|Acid|40|Poison|Special
+0052|Ember|40|Fire|Special
+0053|Flamethrower|90|Fire|Special
+0054|Mist|0|Ice|Status
+0055|Water Gun|40|Water|Special
+0056|Hydro Pump|110|Water|Special
+0057|Surf|90|Water|Special
+0058|Ice Beam|90|Ice|Special
+0059|Blizzard|110|Ice|Special
+0060|Psybeam|65|Psychic|Special
+0061|Bubble Beam|65|Water|Special
+0062|Aurora Beam|65|Ice|Special
+0063|Hyper Beam|150|Normal|Special
+0064|Peck|35|Flying|Physical
+0065|Drill Peck|80|Flying|Physical
+0066|Submission|80|Fighting|Physical
+0067|Low Kick|20|Fighting|Physical
+0068|Counter|0|Fighting|Physical
+0069|Seismic Toss|0|Fighting|Physical
+0070|Strength|80|Normal|Physical
+0071|Absorb|20|Grass|Special
+0072|Mega Drain|40|Grass|Special
+0073|Leech Seed|0|Grass|Status
+0074|Growth|0|Normal|Status
+0075|Razor Leaf|55|Grass|Special
+0076|Solar Beam|120|Grass|Special
+0077|Poison Powder|0|Poison|Status
+0078|Stun Spore|0|Grass|Status
+0079|Sleep Powder|0|Grass|Status
+0080|Petal Dance|120|Grass|Special
+0081|String Shot|0|Bug|Status
+0082|Dragon Rage|40|Dragon|Special
+0083|Fire Spin|35|Fire|Special
+0084|Thunder Shock|40|Electric|Special
+0085|Thunderbolt|90|Electric|Special
+0086|Thunder Wave|0|Electric|Status
+0087|Thunder|110|Electric|Special
+0088|Rock Throw|50|Rock|Physical
+0089|Earthquake|100|Ground|Physical
+0090|Fissure|0|Ground|Physical
+0091|Dig|80|Ground|Physical
+0092|Toxic|0|Poison|Status
+0093|Confusion|50|Psychic|Special
+0094|Psychic|90|Psychic|Special
+0095|Hypnosis|0|Psychic|Status
+0096|Meditate|0|Psychic|Status
+0097|Agility|0|Psychic|Status
+0098|Quick Attack|40|Normal|Physical
+0099|Rage|20|Normal|Physical
+0100|Teleport|0|Psychic|Status
+0101|Night Shade|0|Ghost|Special
+0102|Mimic|0|Normal|Status
+0103|Screech|0|Normal|Status
+0104|Double Team|0|Normal|Status
+0105|Recover|0|Normal|Status
+0106|Harden|0|Normal|Status
+0107|Minimize|0|Normal|Status
+0108|Smokescreen|0|Normal|Status
+0109|Confuse Ray|0|Ghost|Status
+0110|Withdraw|0|Water|Status
+0111|Defense Curl|0|Normal|Status
+0112|Barrier|0|Psychic|Status
+0113|Light Screen|0|Psychic|Status
+0114|Haze|0|Ice|Status
+0115|Reflect|0|Psychic|Status
+0116|Focus Energy|0|Normal|Status
+0117|Bide|0|Normal|Physical
+0118|Metronome|0|Normal|Status
+0119|Mirror Move|0|Flying|Status
+0120|Self-Destruct|400|Normal|Physical
+0121|Egg Bomb|100|Normal|Physical
+0122|Lick|30|Ghost|Physical
+0123|Smog|30|Poison|Special
+0124|Sludge|65|Poison|Special
+0125|Bone Club|65|Ground|Physical
+0126|Fire Blast|110|Fire|Special
+0127|Waterfall|80|Water|Physical
+0128|Clamp|35|Water|Physical
+0129|Swift|60|Normal|Special
+0130|Skull Bash|130|Normal|Physical
+0131|Spike Cannon|100|Normal|Physical
+0132|Constrict|10|Normal|Physical
+0133|Amnesia|0|Psychic|Status
+0134|Kinesis|0|Psychic|Status
+0135|Soft-Boiled|0|Normal|Status
+0136|High Jump Kick|130|Fighting|Physical
+0137|Glare|0|Normal|Status
+0138|Dream Eater|100|Psychic|Special
+0139|Poison Gas|0|Poison|Status
+0140|Barrage|75|Normal|Physical
+0141|Leech Life|80|Bug|Physical
+0142|Lovely Kiss|0|Normal|Status
+0143|Sky Attack|140|Flying|Physical
+0144|Transform|0|Normal|Status
+0145|Bubble|40|Water|Special
+0146|Dizzy Punch|70|Normal|Physical
+0147|Spore|0|Grass|Status
+0148|Flash|0|Normal|Status
+0149|Psywave|0|Psychic|Special
+0150|Splash|0|Normal|Status
+0151|Acid Armor|0|Poison|Status
+0152|Crabhammer|100|Water|Physical
+0153|Explosion|500|Normal|Physical
+0154|Fury Swipes|90|Normal|Physical
+0155|Bonemerang|100|Ground|Physical
+0156|Rest|0|Psychic|Status
+0157|Rock Slide|75|Rock|Physical
+0158|Hyper Fang|80|Normal|Physical
+0159|Sharpen|0|Normal|Status
+0160|Conversion|0|Normal|Status
+0161|Tri Attack|80|Normal|Special
+0162|Super Fang|0|Normal|Physical
+0163|Slash|70|Normal|Physical
+0164|Substitute|0|Normal|Status
+0165|Struggle|50|Normal|Physical
+0304|Hyper Voice|90|Normal|Special

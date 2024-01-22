@@ -2,4 +2,8 @@ HOUSEKEEPING -
 
 This is more of a personal note to help me keep track of this repo and organize my own thoughts/projects.
 
-First thing's first - I'm going to test the connection and make sure I can git push to ktstevick in the first place!
+Looks like we're in there. It seems to be authenticating through my browser at the moment, which isn't a huge deal.
+
+I'll have to provide Terminal with the access code at some point, but that's hardly a priority.
+
+Now, I'm going to add a personal project with no git history.
