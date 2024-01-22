@@ -1,0 +1,19 @@
+START TRANSACTION;
+
+ALTER TABLE users
+ADD COLUMN is_event_owner BOOLEAN DEFAULT FALSE,
+ADD COLUMN first_name VARCHAR (100),
+ADD COLUMN last_name VARCHAR (100),
+ADD COLUMN event_id INT,
+ADD COLUMN is_event_active BOOLEAN DEFAULT FALSE,
+ADD COLUMN user_address VARCHAR (150),
+ADD COLUMN user_city VARCHAR (50),
+ADD COLUMN user_zip VARCHAR (5),
+ADD COLUMN user_phone_number VARCHAR (12),
+ADD COLUMN user_email VARCHAR (150);
+
+ALTER TABLE users ADD FOREIGN KEY (event_id) REFERENCES garden_event (event_id);
+
+COMMIT;
+
+

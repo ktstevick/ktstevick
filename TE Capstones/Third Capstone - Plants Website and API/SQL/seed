@@ -1,0 +1,210 @@
+START TRANSACTION;
+DROP TABLE IF EXISTS garden, plant, forum, post, garden_plant, garden_event, plant_post, reminder, sunshine, user_messages, plant_user, volunteer CASCADE;
+CREATE TABLE plant (
+    plant_id SERIAL PRIMARY KEY,
+    plant_img TEXT,
+    common_name VARCHAR(50),
+    scientific_name VARCHAR(50),
+    other_name VARCHAR(50),
+    watering VARCHAR(30),
+    regular_img_url VARCHAR(150),
+    plant_description TEXT,
+    api_plant_id INT,
+	is_active BOOLEAN DEFAULT TRUE
+);
+CREATE TABLE plant_user (
+    plant_id INT,
+    user_id INT,
+    PRIMARY KEY (plant_id, user_id)
+);
+CREATE TABLE volunteer (
+    volunteer_id SERIAL PRIMARY KEY,
+    event_id INT,
+    volunteer_name VARCHAR (150)
+);
+CREATE TABLE garden (
+    garden_id SERIAL PRIMARY KEY,
+    garden_name VARCHAR (100),
+    user_id INT,
+    street_address VARCHAR (200),
+    garden_city VARCHAR (100),
+    garden_state VARCHAR (100),
+    garden_zip INT,
+    phone_number VARCHAR (12),
+    is_public BOOLEAN DEFAULT FALSE,
+    garden_type VARCHAR (255) CHECK (garden_type IN ('Personal', 'Community'))
+);
+CREATE TABLE garden_plant (
+    plant_id INT,
+    garden_id INT,
+    PRIMARY KEY (plant_id, garden_id)
+);
+CREATE TABLE forum (
+    forum_id SERIAL PRIMARY KEY,
+    forum_name VARCHAR (100) CHECK (forum_name IN ('Marketplace', 'Seasonal Plants', 'Disease Help'))
+);
+CREATE TABLE garden_event (
+    event_id SERIAL PRIMARY KEY,
+    garden_id INT,
+    user_id INT,
+    event_name VARCHAR (150),
+    event_description TEXT,
+    event_coordinator VARCHAR (200),
+    childcare_owner VARCHAR (200),
+    event_date VARCHAR (19),
+    event_category VARCHAR (255) CHECK (event_category IN ('Garden Event', 'Community Event', 'Marketplace Event'))
+);
+CREATE TABLE post (
+    post_id SERIAL PRIMARY KEY,
+    plant_id INT,
+    user_id INT,
+    forum_id INT,
+    post_description VARCHAR (1000),
+    price NUMERIC,
+    quantity INT,
+    title VARCHAR (200),
+    post_img TEXT,
+	is_active BOOLEAN DEFAULT TRUE,
+	reply_to_post_id INT,
+    post_category VARCHAR (255) CHECK (post_category IN ('Marketplace', 'Community Help', 'Share'))
+);
+CREATE TABLE plant_post (
+    post_id INT,
+    plant_id int,
+    PRIMARY KEY (post_id, plant_id)
+);
+CREATE TABLE sunshine (
+    plant_id INT,
+    sunshine_description TEXT,
+    PRIMARY KEY (plant_id, sunshine_description)
+);
+CREATE TABLE user_messages (
+    message_id SERIAL PRIMARY KEY,
+    to_user_id INT,
+    from_user_id INT,
+    message_body TEXT,
+    date_and_time VARCHAR (19),
+    is_read BOOLEAN DEFAULT FALSE
+);
+CREATE TABLE reminder (
+    reminder_id SERIAL PRIMARY KEY,
+    user_id INT,
+    reminder_date_and_time VARCHAR (19),
+    reminder_details TEXT,
+    reminder_icon TEXT,
+    is_active BOOLEAN DEFAULT FALSE
+);
+ALTER TABLE volunteer ADD FOREIGN KEY (event_id) REFERENCES garden_event (event_id);
+ALTER TABLE reminder ADD FOREIGN KEY (user_id) REFERENCES users (user_id);
+ALTER TABLE user_messages ADD FOREIGN KEY (to_user_id) REFERENCES users (user_id);
+ALTER TABLE user_messages ADD FOREIGN KEY (from_user_id) REFERENCES users (user_id);
+ALTER TABLE garden ADD FOREIGN KEY (user_id) REFERENCES users (user_id);
+ALTER TABLE sunshine ADD FOREIGN KEY (plant_id) REFERENCES plant (plant_id);
+ALTER TABLE plant_post ADD FOREIGN KEY (post_id) REFERENCES post (post_id);
+ALTER TABLE plant_post ADD FOREIGN KEY (plant_id) REFERENCES plant (plant_id);
+ALTER TABLE plant_user ADD FOREIGN KEY (user_id) REFERENCES users (user_id);
+ALTER TABLE plant_user ADD FOREIGN KEY (plant_id) REFERENCES plant (plant_id);
+ALTER TABLE garden_event ADD FOREIGN KEY (user_id) REFERENCES users (user_id);
+ALTER TABLE garden_event ADD FOREIGN KEY (garden_id) REFERENCES garden (garden_id);
+ALTER TABLE garden_plant ADD FOREIGN KEY (plant_id) REFERENCES plant(plant_id);
+ALTER TABLE garden_plant ADD FOREIGN KEY (garden_id) REFERENCES garden(garden_id);
+ALTER TABLE post ADD FOREIGN KEY (user_id) REFERENCES users (user_id);
+ALTER TABLE post ADD FOREIGN KEY (forum_id) REFERENCES forum (forum_id);
+
+INSERT INTO forum (forum_name) VALUES ('Marketplace');
+INSERT INTO forum (forum_name) VALUES ('Seasonal Plants');
+INSERT INTO forum (forum_name) VALUES ('Disease Help');
+
+INSERT INTO garden (garden_name, user_id, street_address, garden_city, garden_state, garden_zip, phone_number, is_public, garden_type)
+VALUES ('Rose Garden', 2, '1 Garden Way', 'Cleveland', 'OH', 44130, '216-555-1234', FALSE, 'Community');
+INSERT INTO garden (garden_name, user_id, street_address, garden_city, garden_state, garden_zip, phone_number, is_public, garden_type)
+VALUES ('Vegetable Garden', 1, '1 Yard St', 'Cleveland', 'OH', 44130, '216-555-6789', TRUE, 'Personal');
+
+INSERT INTO plant (common_name, scientific_name, other_name, watering, regular_img_url, plant_description, api_plant_id)
+VALUES ('Mocha Rose Big Leaf Maple', 'Acer macrophyllum "Mocha Rose"', 'Oregon Maple', 'Average', 'https://perenual.com/storage/species_image/24_acer_macrophyllum_mocha_rose/regular/4715169892_220a9d39f6_b.jpg', 
+        'Crown gall is a plant disease caused by the soil-inhibiting bacterium Agrobacterium tumefaciens. It is distributed worldwide and affects a wide range of plants, including fruit trees (e.g., apple, pear),
+        nut trees (e.g., almond, walnut), ornamental plants (e.g., roses, chrysanthemums), vines (e.g., grapevines), and field crops (e.g., cotton, tomatoes). The disease is identified by the presence of galls,
+        and overgrowths, on roots and at the base of woody plants. These galls can also appear on stems and leaves. Crown gall can lead to stunted growth, reduced yield, and weakened plants.', 24);
+INSERT INTO plant (common_name, scientific_name, other_name, watering, regular_img_url, plant_description, api_plant_id)
+VALUES ('Dolgo Apple', 'Malus "Dolgo"', 'Roseybloom', 'Average', 'https://perenual.com/storage/species_image/359_malus_dolgo/regular/apple-zieraepfel-wild-apple-tree-branch.jpg', 'Malus "Dolgo" is an amazing plant 
+		species if you are looking for a reliable fruit tree that delivers a bounty of sweet apples for years. This robust apple tree grows vigorously and has excellent disease resistance. It bears large, bright 
+		red apples that are showy and sweet, perfect for eating and cooking. The fruit is small but is quite juicy and has a pleasant sweet-tart flavor. Its harvest time is from mid-September to early October, and 
+		Dolgo apples store well for long periods of time. Its showy white blossoms are a sight to behold in the spring, making it an attractive landscape addition for any garden. It is no wonder Dolgo apples are 
+		a favorite of apple lovers everywhere.', 359);
+INSERT INTO plant (common_name, scientific_name, other_name, watering, regular_img_url, plant_description, api_plant_id)
+VALUES ('hollyhock', 'Alcea rosea', ' ', 'Average', 'https://perenual.com/storage/species_image/653_alcea_rosea/regular/52177324906_3e75a503f7_b.jpg', 'Hollyhock (Alcea rosea) is a beautiful and versatile plant 
+		that is easy to grow. With blooms that come in shades of pink, purple, yellow, and white, it will add a splash of vivid color to any garden. It has tall stalks of large flowers and is undemanding and very 
+		tolerant, growing in a range of soils and climates. It is also a great choice for a wildlife garden, attracting beneficial insects like bees and hoverflies. Its flowers also make for a stunning cut flower 
+		for arranging. Hollyhock is an amazing plant and a timeless favorite in the garden.', 653);
+		
+INSERT INTO post (plant_id, user_id, forum_id, post_description, price, quantity, title, post_category, is_active)
+VALUES (1, 1, 1, 'This is a mature rose plant. It has been healthy and growing in my backyard garden for two years! I am only selling it because I need to make room for new plants.', 15.00, 1, 
+		'Rose Plant for Sale at a great price!', 'Marketplace', 'true' );
+INSERT INTO post (plant_id, user_id, forum_id, post_description, price, quantity, title, post_category, is_active)
+VALUES (2, 1, 1, 'I am selling this yound apple tree because it did not fit in the planned space. My loss is your gain!.', 4.00, 1, 'Apple Tree for Sale', 'Marketplace', 'true' );
+INSERT INTO post (plant_id, user_id, forum_id, post_description, price, quantity, title, post_category, is_active)
+VALUES (3, 1, 1, 'This is a bundle of 6 peace trees. They are all in great condition and ship for free. Message me for more details. All are less than 1 year old.', 35.00, 1, 'Lot of 6 Peach trees. Must see!', 'Marketplace', 'true' );
+
+INSERT INTO post (plant_id, user_id, forum_id, post_description, title, post_category, is_active)
+VALUES (1, 1, 3, 'I am not sure what is wrong with my tomato plant. The leaves started to curle last week and now they are turning brown. I have been giving it water once a day like instructions say. Not sure what is wrong', 
+		'Tomato plant not looking so good. Please help!', 'Community Help', 'true' );
+INSERT INTO post (plant_id, user_id, forum_id, post_description, title, post_category, is_active)
+VALUES (2, 1, 3, 'A while back I planted a bunch of strawbarries. This year they grew really well. They have a lot of leaves and seem to be pretty healthy. The problem is that they have not produced any actual berries this year.
+		Not sure if they have not gotten enough sun or what the problem is. Is anyone else having this problem?', 
+		'No strawberries this year?', 'Community Help', 'true' );
+INSERT INTO post (plant_id, user_id, forum_id, post_description, title, post_category, is_active)
+VALUES (3, 1, 3, 'I am having a problem with snails. They have gotten into my garden and are damaging my watermellons. Does anyone know how to get rid of garden snails?', 
+		'I need help getting rid of garden snails!', 'Community Help', 'true' );
+
+INSERT INTO post (plant_id, user_id, forum_id, post_description, title, post_category, is_active)
+VALUES (1, 1, 2, 'My whole family is eating of my garden this year. It is doing great! I hope everyone else is having as good of a year as I am!', 
+		'Garden is producing great!', 'Share', 'true' );
+INSERT INTO post (plant_id, user_id, forum_id, post_description, title, post_category, is_active)
+VALUES (2, 1, 2, 'There will be a community garden volunteer day downtown. If anyone would like to attend please call 555-555-5555 and ask for Sam. We would love to see you there. We will be planting all your summer favorites!', 
+		'Summer planting event downtown!', 'Share', 'true' );
+INSERT INTO post (plant_id, user_id, forum_id, post_description, title, post_category, is_active)
+VALUES (3, 1, 2, 'I am just curious what kind of cucumbers everyone is growing? I am new to the area and am curious to know which veriaties do best around here. Thanks!', 
+		'What cucumbers are you growing?', 'Share', 'true' );
+
+
+INSERT INTO sunshine (plant_id, sunshine_description)
+VALUES (1, 'full sun');
+INSERT INTO sunshine (plant_id, sunshine_description)
+VALUES (1, 'part shade');
+INSERT INTO sunshine (plant_id, sunshine_description)
+VALUES (2, 'full shade');
+INSERT INTO sunshine (plant_id, sunshine_description)
+VALUES (2, 'part sun');
+INSERT INTO sunshine (plant_id, sunshine_description)
+VALUES (3, 'full shade');
+INSERT INTO sunshine (plant_id, sunshine_description)
+VALUES (3, 'part shade');
+
+INSERT INTO garden_plant (plant_id, garden_id)
+VALUES (1, 1);
+INSERT INTO garden_plant (plant_id, garden_id)
+VALUES (2, 1);
+INSERT INTO garden_plant (plant_id, garden_id)
+VALUES (3, 1);
+
+INSERT INTO garden_plant (plant_id, garden_id)
+VALUES (1, 2);
+INSERT INTO garden_plant (plant_id, garden_id)
+VALUES (2, 2);
+INSERT INTO garden_plant (plant_id, garden_id)
+VALUES (3, 2);
+
+
+INSERT INTO user_messages (to_user_id, from_user_id, message_body, date_and_time, is_read)
+VALUES (1, 2, 'I am interested in the lot of peach trees. Can we meet next week at some point? ', '2023-12-07 12:34:01', FALSE);
+INSERT INTO user_messages (to_user_id, from_user_id, message_body, date_and_time, is_read)
+VALUES (1, 2, 'I think you might be overfeeding your tomatoes and that might be why you are having trouble. Try cutting back on the soil quality a little bit.', 
+		'2023-12-07 12:34:10', TRUE);
+INSERT INTO user_messages (to_user_id, from_user_id, message_body, date_and_time, is_read)
+VALUES (1, 2, 'I the rose bush still available?', '2023-12-07 12:34:10', TRUE);
+
+
+COMMIT;
+
+
+
