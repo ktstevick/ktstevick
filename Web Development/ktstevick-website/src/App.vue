@@ -1,28 +1,34 @@
+<!-- This is it! -->
+
+<!-- Starting with Desktop design, but even still, I have to take some measures for smaller setups. I NEED to find a way to lock the wrapper's width so it never gets smashed in... -->
+<!-- And, ultimately, this whole thing probably gets set to flex for tablets and changing sizes (until you hit Mobile dimensions, of course)-->
+
 <template>
   <header>
     <div class="wrapper">
       <div id="topHalf">
-        <h1 v-on:click="returnHome">KT STEVICK</h1>
+        <h1 v-on:click="returnHome">KT Stevick</h1>
         <h2>artist</h2>
       </div>
 
       <div id="bottomHalf">
-      <nav>
-        <RouterLink to="/portfolio">Portfolio</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+        <nav>
+          <RouterLink to="/portfolio">Portfolio</RouterLink>
+          <RouterLink to="/about">About</RouterLink>
+        </nav>
 
-      <div id="mediaLinks">
-        <img class="linkImage" src="../src/assets/icons/instaicon.png" alt="insta" />
-        <img class="linkImage" src="../src/assets/icons/githubicon.png" alt="insta" />
-        <img class="linkImage" src="../src/assets/icons/linkedinicon.png" alt="insta" />
+        <div id="mediaLinks">
+          <img class="linkImage" src="../src/assets/icons/instaicon.png" alt="insta" v-on:click="toInstagram" />
+          <img class="linkImage" src="../src/assets/icons/githubicon.png" alt="gitHub" v-on:click="toGitHub" />
+          <img class="linkImage" src="../src/assets/icons/linkedinicon.png" alt="linkedIn" v-on:click="toLinkedIn" />
+        </div>
       </div>
     </div>
-  </div>
   </header>
 
-  <RouterView />
-
+  <div class="routerView">
+    <RouterView />
+  </div>
 </template>
 
 <script>
@@ -36,7 +42,18 @@ export default {
 
   methods: {
     returnHome() {
-      this.$router.push({ name: 'home'});
+      this.$router.push({ name: 'home' });
+    },
+
+    // Links to external but relevant sites
+    toInstagram() {
+      window.location.href = 'https://www.instagram.com/ktstevick/';
+    },
+    toGitHub() {
+      window.location.href = 'https://github.com/ktstevick/ktstevick';
+    },
+    toLinkedIn() {
+      window.location.href = 'https://www.linkedin.com/in/ktstevick/';
     }
   }
 }
@@ -44,10 +61,11 @@ export default {
 
 <style scoped>
 /* It's very likely I'll have to make this header a fixed length rather than a function of view width in the future */
-header {
-  line-height: 1.5;
-  height: 100vh;
-  /* background-color: rgb(255, 211, 218); */
+.routerView {
+  width: 60vw;
+  position: absolute;
+  top: 13vh;
+  left: 550px;
 }
 
 h1 {
@@ -57,7 +75,7 @@ h1 {
 
 h1:hover {
   cursor: pointer;
-  color:rgb(102, 102, 102);
+  color: rgb(102, 102, 102);
 }
 
 h2 {
@@ -66,31 +84,34 @@ h2 {
 }
 
 #topHalf {
-  display:grid;
+  display: grid;
   grid-template-columns: 2fr 1fr;
   align-items: baseline;
-  width: 20vw;
+
+  width: 375px;
+  height: 60px;
+
   border-bottom: 2px solid gray;
+
+  position: fixed;
+  top: 43vh;
+  left: 6vw;
 }
 
 #bottomHalf {
-  display:grid; 
+  display: grid;
   grid-template-columns: 1fr 2fr;
-  width: 20vw;
+  width: 375px;
+  height: 60px;
+
+  position: fixed;
+  /* top: (43vh + 50px); */
+  left: 6vw;
 }
 
-#mediaLinks {
-  text-align: right;
-}
-
-.linkImage {
-  height: 25px;
-  width: 25px;
-  margin: 5px;
-}
-
+/* THESE control the nav options beneath the title card, I like them and don't plan to alter them much */
 nav {
-  width: 10vw;
+  width: 175px;
   text-align: left;
   margin-top: 5px;
 }
@@ -113,23 +134,15 @@ nav a:first-of-type {
   border: 0;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+#mediaLinks {
+  text-align: right;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+.linkImage {
+  height: 25px;
+  width: 25px;
+  margin: 5px;
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-
+  cursor: pointer;
 }
 </style>
