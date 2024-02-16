@@ -12,35 +12,42 @@
                 <div class="description">
                     <h2>ILLUSTRATION</h2>
                     <p>
-                        &nbsp; This gallery is just a sample of illustrations from my time at the American Academy of Art. I 
-                        actually wanted to be a draftsman originally - I'll save the story of how I wound up a painter for another time.
+                        &nbsp; This gallery is just a sample of illustrations from my time at the American Academy of Art. I
+                        actually wanted to be a draftsman originally - I'll save the story of how I wound up a painter for
+                        another time.
                     </p>
                     <p>
-                        &nbsp; Two midtone drawings - one with pencil on gray paper, the other with charcoal on white paper I actually toned myself.
-                        I had half a dozen pastel drawings over my stay but this remains one of my favorite. Transitioning with color to two cell shaded marker pieces,
+                        &nbsp; Two midtone drawings - one with pencil on gray paper, the other with charcoal on white paper
+                        I actually toned myself.
+                        I had half a dozen pastel drawings over my stay but this remains one of my favorite. Transitioning
+                        with color to two cell shaded marker pieces,
                         just so you can get an idea of how I like to organize my marks and construct my outlines.
                     </p>
                     <p>
-                        &nbsp; In the art world, drawing is often viewed as something one does BEFORE they make art, a painting, a performance, any piece. I don't think it stems
-                        from a place of hate, but rather, that drawing is overlooked in this way for the same reason we have a hard time seeing our nose. I wouldn't go as far as to say
-                        any of these images represent fine art, but I always have and always will love drawing and absolutely revel with delight when I happen upon it in a gallery.
+                        &nbsp; In the art world, drawing is often viewed as something one does BEFORE they make art, a
+                        painting, a performance, any piece. I don't think it stems
+                        from a place of hate, but rather, that drawing is overlooked in this way for the same reason we have
+                        a hard time seeing our nose. I wouldn't go as far as to say
+                        any of these images represent fine art, but I always have and always will love drawing and
+                        absolutely revel with delight when I happen upon it in a gallery.
                     </p>
                     <p>
                         &nbsp; It's a very brave way of saying "This exists, and it IS art. No sense overworking it."
                     </p>
                     <p>
-                        &nbsp; In the future, I'll be able to illustrate for you more about my working methods with drawings. For now, enjoy the sneak peek into my process!
+                        &nbsp; In the future, I'll be able to illustrate for you more about my working methods with
+                        drawings. For now, enjoy the sneak peek into my process!
                     </p>
                 </div>
 
-                <div class="fineArtsLink" v-on:click="toFineArts">
+                <div class="linkOne" v-on:click="toFineArts">
                     <img class="banner" src="../assets/images/banner1.jpg" />
                     <span class="text-context">
                         <h1>Fine Arts</h1>
                     </span>
                 </div>
 
-                <div class="softwareLink" v-on:click="toSoftware">
+                <div class="linkTwo" v-on:click="toSoftware">
                     <img class="banner" src="../assets/images/banner3.jpg" />
                     <span class="text-context">
                         <h1>Software</h1>
@@ -72,120 +79,59 @@ export default {
     }
 }
 </script>
-
 <style scoped>
-.container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-        "content description"
-        "content description"
-        "content description";
-    gap: 6vh;
-}
-
+/* Consolidated */
 .banner {
-    height: 12vh;
+    height: 10vh;
     width: 100%;
+
     object-fit: cover;
-    border-radius: 5px;
-}
-
-.box1 {
-    /* background-color: hsl(241, 100%, 75%); */
-    height: 75vh;
-    margin-top: 10px;
-    grid-area: content;
-}
-
-.box2 {
-    /* background-color: hsl(241, 100%, 75%); */
-    height: 75vh;
-    margin-top: 1vh;
-    grid-area: description;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-        "linkOne linkTwo"
-        "description description";
 }
 
 .description {
-    background-color: rgba(255, 221, 184, 0.5);
-
-    height: 52.5vh;
-    width: 92.5%;
-
-    margin-left: 1vw;
-    margin-right: 5vw;
-
-    grid-area: description;
+    background-color: rgb(255, 239, 228);
+    margin-top: 3vw;
+    border-radius: 15px;
 }
 
 .description h2 {
-    margin: 1vh;
-    border-bottom: 2px solid black;
-
-    width: 208px;
-
-    font-size: 2em;
     text-align: center;
+    font-size: 2.5em;
+    background-color: rgb(236, 211, 194);
+
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 .description p {
-    margin: 1vh;
-    padding-top: .5vh;
-
-    font-size: 1.5vh;
+    font-size: 1.2em;
+    margin: 10px;
 }
 
-.fineArtsLink {
-    height: 12vh;
-    width: 12vw;
+.description p:last-of-type {
+    padding-bottom: 6vw;
+}
 
-    margin-top: 1vh;
-    margin-left: 1vw;
-    margin-right: 1vw;
-
-    /* background-color: hsl(241, 62%, 63%); */
-    grid-area: linkOne;
-
+.linkOne {
+    height: 10vh;
+    margin-bottom: 3vw;
     position: relative;
 }
 
-.softwareLink {
-    height: 12vh;
-    width: 12vw;
-
-    margin-top: 1vh;
-    margin-left: 1vw;
-    margin-right: 1vw;
-    border-radius: 10px;
-
-    /* background-color: hsl(241, 62%, 63%); */
-    grid-area: linkTwo;
-
+.linkTwo {
+    height: 10vh;
+    margin-bottom: 3vw;
     position: relative;
 }
-
-main {
-    /* background-color: pink; */
-    margin-left: 3vw;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
 
 .text-context {
-    background-color: rgba(0, 5, 30, 0.5);
+    background-color: rgba(0, 5, 30, 0.25);
     color: white;
     cursor: pointer;
 
-    height: 12vh;
+    height: 10vh;
     width: 100%;
 
-    opacity: 0;
     -webkit-transition: opacity 500ms;
     -moz-transition: opacity 500ms;
     -o-transition: opacity 500ms;
@@ -196,19 +142,131 @@ main {
     left: 50%;
     transform: translate(-50%, -50%);
 
-    display: table;
+    display: flex;
     text-align: center;
-
-    border-radius: 5px;
 }
 
 .text-context h1 {
-    font-size: 3vh;
+    font-size: 7vw;
+    letter-spacing: 10px;
 
-    padding-top: 3.75vh;
-    padding-bottom: 4.25vh;
+    align-self: center;
+    margin: 0 auto;
 }
 
-span.text-context:hover {
-    opacity: 1;
-}</style>
+/* Small devices (Phones below 600px) */
+@media only screen and (max-width: 600px) {}
+
+/* Large phones and tablets (above 600px) */
+@media only screen and (min-width: 600px) {
+    .description {
+        margin: 4vh;
+    }
+
+    .description p:last-of-type {
+        padding-bottom: 3vw;
+    }
+
+    .text-context h1 {
+        font-size: 5vw;
+    }
+}
+
+/* Large tablets and all desktops (above 1024px) */
+@media only screen and (min-width: 1024px) {
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .box1 {
+        height: 90vh;
+        min-width: 500px;
+        min-height: 800px;
+    }
+
+    .box2 {
+        height: 90vh;
+        min-width: 750px;
+        min-height: 800px;
+        margin-left: 3vw;
+        display: grid;
+        /* grid-template-rows: 1fr 1fr 4fr; */
+        grid-template-areas:
+            "linkOne"
+            "linkTwo"
+            "description";
+    }
+
+    .banner {
+        height: 10vh;
+        min-height: 100px;
+        width: 100%;
+
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    /* Originally a single class, split to make grid work easier */
+    .linkOne {
+        height: 10vh;
+        min-height: 100px;
+
+        margin: 4vh 2vh 0 2vh;
+        border-radius: 10px;
+
+        grid-area: linkOne;
+    }
+
+    .linkTwo {
+        height: 10vh;
+        min-height: 100px;
+
+        margin: 2vh;
+        border-radius: 10px;
+
+        grid-area: linkTwo;
+    }
+
+    .description {
+        border-radius: 15px;
+
+        grid-area: description;
+    }
+
+    .description h2 {
+        text-align: center;
+        font-size: 2em;
+
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .description p {
+        font-size: 1.2em;
+        margin: 20px 30px;
+    }
+
+    .description p:last-of-type {
+        padding-bottom: 0;
+    }
+
+
+    .text-context {
+        background-color: rgba(0, 5, 30, 0.5);
+        opacity: 0;
+
+        min-height: 100px;
+        border-radius: 5px;
+    }
+
+    .text-context h1 {
+        font-size: 1.5vw;
+        letter-spacing: 10px;
+    }
+
+    span.text-context:hover {
+        opacity: 1;
+    }
+}
+</style>

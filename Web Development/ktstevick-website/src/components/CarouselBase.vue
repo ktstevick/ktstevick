@@ -1,12 +1,13 @@
 <!-- Full credit to -- https://ismail9k.github.io/vue3-carousel/getting-started.html -->
 
+<!-- IDLE THOUGHTS: would love to have the img title change based on some quality in the store. Clicking the image and having it display fullscreen (a la MBK) would also be great. -->
+
 <template>
-  <Carousel :items-to-show="2" :wrap-around="true">
+  <Carousel :items-to-show="1.5" :wrap-around="true">
     <Slide v-for="piece in gallery" :key="piece.id">
+
       <div class="carousel__item">
-
         <img class="little_image" v-bind:src="gallery[piece.id - 1].image" />
-
       </div>
     </Slide>
 
@@ -26,7 +27,7 @@ export default defineComponent({
   name: 'WrapAround',
 
   props: {
-    gallery: { type:Array, required:true }
+    gallery: { type: Array, required: true }
   },
 
   components: {
@@ -37,37 +38,37 @@ export default defineComponent({
 })
 </script>
   
-  <style scoped>
-  .carousel__item {
-    min-height: 20vh;
-    width: 100%;
+<style scoped>
+/* Consolidated */
+.carousel__slide {
+  padding-left: 10px;
+  padding-right: 10px;
+}
 
-    color: var(--vc-clr-white);
-    font-size: 20px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-  }
-  
-  .carousel__slide {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  
-  .carousel__prev,
-  .carousel__next {
-    box-sizing: content-box;
-    border: 5px solid white;
-  }
-
-  .little_image {
-    height: 20vh;
-    width: 100%;
-  
-  object-fit: cover;
-
+.little_image {
+  height: 65vw;
+  width: 65vw;
   border-radius: 10px;
+
+  object-fit: cover;
+}
+
+/* Small devices (Phones below 600px) */
+@media only screen and (max-width: 600px) {}
+
+/* Large phones and tablets (above 600px) */
+@media only screen and (min-width: 600px) {}
+
+/* Large tablets and all desktops (above 1024px) */
+@media only screen and (min-width: 1024px) {
+  .carousel__item {
+    width: 100%;
   }
-  </style>
+
+  /* Width gets redefined back to 100% here */
+  .little_image {
+    height: 30vh;
+    width: 100%;
+  }
+}
+</style>

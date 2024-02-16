@@ -1,148 +1,296 @@
-<!-- This is it! -->
-
-<!-- Starting with Desktop design, but even still, I have to take some measures for smaller setups. I NEED to find a way to lock the wrapper's width so it never gets smashed in... -->
-<!-- And, ultimately, this whole thing probably gets set to flex for tablets and changing sizes (until you hit Mobile dimensions, of course)-->
+<!-- Idle Thoughts: tablet/mobile banner should be a fixed size - people may want to tilt their phones sideways to see the images more closely!
+                    The title card doesn't NEED to float on the desktop - would making it fixed and setting up a grid like 1fr 3fr, between title and router work? -->
 
 <template>
   <header>
-    <div class="wrapper">
-      <div id="topHalf">
-        <h1 v-on:click="returnHome">KT Stevick</h1>
-        <h2>artist</h2>
-      </div>
+    <div id="headerTop">
+      <h1 v-on:click="this.$router.push({ name: 'home' })">KT Stevick</h1>
+      <h2 v-if="!smallScreen">artist</h2>
+    </div>
 
-      <div id="bottomHalf">
-        <nav>
+    <div id="headerBottom">
+      <nav>
+        <div class="routerLink">
           <RouterLink to="/portfolio">Portfolio</RouterLink>
-          <RouterLink to="/about">About</RouterLink>
-        </nav>
-
-        <div id="mediaLinks">
-          <img class="linkImage" src="../src/assets/icons/instaicon.png" alt="insta" v-on:click="toInstagram" />
-          <img class="linkImage" src="../src/assets/icons/githubicon.png" alt="gitHub" v-on:click="toGitHub" />
-          <img class="linkImage" src="../src/assets/icons/linkedinicon.png" alt="linkedIn" v-on:click="toLinkedIn" />
         </div>
+        <div class="routerLink">
+          <RouterLink to="/about">About</RouterLink>
+        </div>
+        <div class="routerLink" v-if="smallScreen">
+          <RouterLink to="/">Home</RouterLink>
+        </div>
+      </nav>
+
+      <div v-if="!smallScreen">
+        <a class="linkImage" href="https://www.instagram.com/ktstevick/">
+          <img class="linkImage" src="../src/assets/icons/instaicon.png" alt="insta" />
+        </a>
+        <a class="linkImage" href="https://github.com/ktstevick/ktstevick">
+          <img src="../src/assets/icons/githubicon.png" alt="gitHub" />
+        </a>
+        <a class="linkImage" href="https://www.linkedin.com/in/ktstevick/">
+          <img src="../src/assets/icons/linkedinicon.png" alt="linkedIn" />
+        </a>
       </div>
     </div>
   </header>
 
-  <div class="routerView">
+  <div id="routerView">
     <RouterView />
+  </div>
+
+  <div id="footer" v-if="smallScreen">
+    <a class="linkImage" href="https://www.instagram.com/ktstevick/">
+      <img class="linkImage" src="../src/assets/icons/instaicon.png" alt="insta" />
+    </a>
+    <a class="linkImage" href="https://github.com/ktstevick/ktstevick">
+      <img src="../src/assets/icons/githubicon.png" alt="gitHub" />
+    </a>
+    <a class="linkImage" href="https://www.linkedin.com/in/ktstevick/">
+      <img src="../src/assets/icons/linkedinicon.png" alt="linkedIn" />
+    </a>
   </div>
 </template>
 
-<script>
+<!-- Pretty much every page uses the standard <script>: here, however, I opted for <script setup> so I could access this smallScreen trait and
+     v-if elements out of the DOM in real time as the window size adjusts. I'm pretty sure I could have accomplished the same thing with a setup
+     function of some kind, but I didn't need the exports or named methods here anyways, so it seemed like the most efficient choice. This note 
+     is mostly for myself - it looked so smooth/natural, it only took fifteen minutes to forget WHY I overhauled the whole thing. -->
+<script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import { useMatchMedia } from './store/misc.js'
 
-export default {
-  components: {
-    RouterLink,
-    RouterView
-  },
-
-  methods: {
-    returnHome() {
-      this.$router.push({ name: 'home' });
-    },
-
-    // Links to external but relevant sites
-    toInstagram() {
-      window.location.href = 'https://www.instagram.com/ktstevick/';
-    },
-    toGitHub() {
-      window.location.href = 'https://github.com/ktstevick/ktstevick';
-    },
-    toLinkedIn() {
-      window.location.href = 'https://www.linkedin.com/in/ktstevick/';
-    }
-  }
-}
+const smallScreen = useMatchMedia('(max-width: 1179px)');
 </script>
 
 <style scoped>
-/* It's very likely I'll have to make this header a fixed length rather than a function of view width in the future */
-.routerView {
-  width: 60vw;
-  position: absolute;
-  top: 13vh;
-  left: 550px;
-}
+/* Consolidating styles between sizes here */
+header {
+  background-color: rgb(245, 245, 245);
 
-h1 {
-  display: inline;
-  font-size: 2.5rem;
-}
+  height: 11vh;
+  width: 100vw;
+  border-bottom: 2px solid black;
 
-h1:hover {
-  cursor: pointer;
-  color: rgb(102, 102, 102);
-}
-
-h2 {
-  display: inline;
-  text-align: right;
-}
-
-#topHalf {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  align-items: baseline;
-
-  width: 375px;
-  height: 60px;
-
-  border-bottom: 2px solid gray;
+  top: 0px;
+  left: 0px;
 
   position: fixed;
-  top: 43vh;
-  left: 6vw;
+  z-index: 100;
+
+  display: flex;
+  text-align: center;
 }
 
-#bottomHalf {
+#headerTop {
+  display: flex;
+}
+
+#headerTop h1 {
+  margin: 0 0 1vh 5vw;
+
+  font-size: 2.5em;
+  align-self: flex-end;
+}
+
+#headerBottom {
+  margin: 0 0 0 auto;
+}
+
+#routerView {
+  /* background-color: rgb(211, 192, 255); */
+
+  padding-top: 11vh;
+}
+
+#footer {
+  height: 12vh;
+
+  margin: 1vh 9.5vw 0 9.5vw;
+  border-top: 2px solid black;
+
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  width: 375px;
-  height: 60px;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: start;
+  justify-items: center;
 
-  position: fixed;
-  /* top: (43vh + 50px); */
-  left: 6vw;
+  /* opacity: .25; */
 }
 
-/* THESE control the nav options beneath the title card, I like them and don't plan to alter them much */
+/* Navigation */
 nav {
-  width: 175px;
-  text-align: left;
-  margin-top: 5px;
+  height: 11vh;
+  width: 45vw;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.routerLink {
+  background-color: hsla(241, 100%, 50%, 0.1);
+
+  height: 11vh;
+  border-bottom: 2px solid black;
+
+  display: flex;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.routerLink:nth-of-type(2) {
+  background-color: hsla(241, 100%, 50%, 0.3);
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+.routerLink:nth-of-type(3) {
+  background-color: hsla(241, 100%, 50%, 0.5);
 }
 
-nav a:first-of-type {
-  border: 0;
-}
+/* Actual links */
+#headerBottom nav div a {
+  margin: 0px auto 0px auto;
 
-#mediaLinks {
-  text-align: right;
+  font-size: 3vw;
+  align-self: flex-end;
 }
 
 .linkImage {
-  height: 25px;
-  width: 25px;
-  margin: 5px;
+  height: 12vh;
+  width: 27vw;
 
+  text-align: center;
   cursor: pointer;
+}
+
+.linkImage img {
+  margin-top: 1vh;
+  height: 7vh;
+  width: 7vh;
+}
+
+/* Small devices (Phones below 600px) */
+@media only screen and (max-width: 600px) {
+  nav a {
+    font-weight: bold;
+  }
+}
+
+/* Large phones and tablets (above 600px) */
+@media only screen and (min-width: 600px) {
+  #headerTop h1 {
+    font-size: 3.5em;
+  }
+}
+
+/* Large tablets and all desktops (above 1180px) */
+@media only screen and (min-width: 1180px) {
+  header {
+    width: 24vw;
+    margin: 0 .5vw;
+
+    border-bottom: 0px;
+
+    top: 45%;
+
+    display: block;
+  }
+
+  #headerTop {
+    max-width: 325px;
+
+    margin: 0 auto;
+    border-bottom: 2px solid black;
+
+    display: flex;
+  }
+
+  #headerTop h1 {
+    margin: 0 auto 0 0;
+
+    font-size: 2.5em;
+    transition: 0.4s;
+  }
+
+  #headerTop h1:hover {
+    cursor: pointer;
+    color: rgb(94, 49, 255);
+  }
+
+  #headerTop h2 {
+    color: rgb(102, 102, 102);
+
+    /* Fixed number derived from h1 font size */
+    padding-top: 18px;
+  }
+
+  #headerBottom {
+    max-width: 325px;
+    margin: 5px auto;
+    border: 0;
+
+    display: flex;
+  }
+
+  #headerBottom nav {
+    margin: 2px auto auto 5px;
+  }
+
+  .routerLink {
+    background-color: rgb(245, 245, 245);
+
+    height: 23px;
+    border-bottom: 0;
+  }
+
+  .routerLink:nth-of-type(2) {
+    background-color: rgb(245, 245, 245);
+    border-left: 1px solid hsla(241, 100%, 50%, 0.5);
+  }
+
+  nav a {
+    padding: 0 12px;
+    border-bottom: 0;
+
+    font-size: 1.1em;
+  }
+
+  nav a:first-of-type {
+    border: 0;
+  }
+
+  nav a:hover {
+    background-color: hsla(241, 100%, 50%, 0.2);
+  }
+
+  #headerBottom div {
+    display: flex;
+  }
+
+  /* Adjust text size of site links */
+  #headerBottom nav div a {
+    font-size: 1.1em;
+  }
+
+  .linkImage {
+    height: 25px;
+    width: 25px;
+
+    margin-top: 0;
+    margin-right: 7px;
+  }
+
+  .linkImage img {
+    height: 25px;
+    width: 25px;
+
+    margin-top: 0;
+  }
+
+  #routerView {
+    /* background-color: rgba(197, 146, 255, 0.5); */
+
+    width: 68vw;
+    height: 90vh;
+
+    padding: 0;
+    margin: 5vh 0 5vh 27vw;
+  }
 }
 </style>

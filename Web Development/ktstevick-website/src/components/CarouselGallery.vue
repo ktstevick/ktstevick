@@ -11,14 +11,8 @@
   </Carousel>
 
   <!-- LITTLE CAROUSEL -->
-  <Carousel
-    id="thumbnails"
-    :items-to-show="3"
-    :wrap-around="false"
-    v-model="currentSlide"
-    ref="carousel"
-  >
-  <!-- Extra space for readability -->
+  <Carousel id="thumbnails" :items-to-show="3" :wrap-around="false" v-model="currentSlide" ref="carousel">
+
     <Slide v-for="piece in gallery" :key="piece.id">
 
       <div class="little_carousel_item" @click="slideTo(piece.id - 1)">
@@ -26,7 +20,7 @@
         <img class="little_image" v-bind:src="gallery[piece.id - 1].image" />
 
       </div>
-    
+
     </Slide>
   </Carousel>
 </template>
@@ -40,7 +34,7 @@ export default defineComponent({
   name: 'GalleryOne',
 
   props: {
-    gallery: { type:Array, required:true }
+    gallery: { type: Array, required: true }
   },
 
   components: {
@@ -62,55 +56,61 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  .carousel__slide {
-    padding: 10px;
-  }
-
-.big_carousel_item {
-  min-height: 55vh;
-    width: 100%;
-
-    color: var(--vc-clr-white);
-    font-size: 20px;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .big_image {
-  height: 55vh;
-  width: 100%;
+  width: 100vw;
+  height: 120vw;
 
-  border-top: 10px solid black;
-  border-right: 10px solid black;
-  border-left: 10px solid rgb(100,100,100);
-  border-bottom: 10px solid rgb(100, 100, 100);
-  border-radius: 2px;
+  padding-bottom: 3vw;
+  object-fit: cover;
 }
 
 .little_carousel_item {
-  max-height: 15vh;
-    width: 100%;
-
-    color: var(--vc-clr-white);
-    font-size: 20px;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
 }
 
 .little_image {
-  height: 15vh;
-  width: 100%;
-  
-  object-fit: cover;
+  height: 29vw;
+  width: 29vw;
 
+  object-fit: cover;
   border-radius: 10px;
 }
 
 .little_image:hover {
   cursor: pointer;
+}
+
+/* Small devices (Phones below 600px) */
+@media only screen and (max-width: 600px) {}
+
+/* Large phones and tablets (above 600px) */
+@media only screen and (min-width: 600px) {
+  .big_image {
+    height: 90%;
+    width: 80%;
+
+    border-top: 10px solid black;
+    border-right: 10px solid black;
+    border-left: 10px solid rgb(100, 100, 100);
+    border-bottom: 10px solid rgb(100, 100, 100);
+    border-radius: 2px;
+    padding-bottom: 0;
+  }
+}
+
+/* Large tablets and all desktops (above 1180px) */
+@media only screen and (min-width: 1180px) {
+
+
+  .little_image {
+    min-height: 150px;
+    max-height: 10vw;
+    width: 90%;
+    height: 15vh;
+  }
+
+  .little_carousel_item {
+    padding-top: 50px;
+  }
 }
 </style>

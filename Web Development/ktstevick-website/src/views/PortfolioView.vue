@@ -1,127 +1,141 @@
-<template>
-    <main>
-    <div class="container">
-      <div class="box1" v-on:click="toFineArts">
-        <img class="banner" src="../assets/images/banner1.jpg" />
-          <span class="text-context">
-            <h1>F i n e  &nbsp; A r t s</h1>
-          </span>
-      </div>
+<!-- Idle Thoughts: tablet/mobile span transitions occur on scroll? Probably a pretty involved process, would be nice to incorporate the spans to their full potential on all views, though. -->
+<!--                Looks good, but programmatically I'd like to refine how the navigation itself is handled -->
 
-      <div class="box2" v-on:click="toIllustration">
-        <img class="banner" src="../assets/images/banner2.jpg" />
+<template>
+  <main>
+    <div class="container">
+      <div class="bannerBox" v-on:click="toFineArts">
+        <img class="banner" src="../assets/images/banner1.jpg" />
         <span class="text-context">
-          <h1>I l l u s t r a t i o n</h1>
+          <h1>Fine Arts</h1>
         </span>
       </div>
 
-      <div class="box3" v-on:click="toSoftware">
-        <img class="banner" src="../assets/images/banner3.jpg"/>
+      <div class="bannerBox" v-on:click="toIllustration">
+        <img class="banner" src="../assets/images/banner2.jpg" />
         <span class="text-context">
-          <h1>S o f t w a r e</h1>
+          <h1>Illustration</h1>
+        </span>
+      </div>
+
+      <div class="bannerBox" v-on:click="toSoftware">
+        <img class="banner" src="../assets/images/banner3.jpg" />
+        <span class="text-context">
+          <h1>Software</h1>
         </span>
       </div>
     </div>
-</main>
+  </main>
 </template>
 
 <script>
 export default {
   methods: {
     toFineArts() {
-      this.$router.push({ name: 'fineArts'});
+      this.$router.push({ name: 'fineArts' });
     },
     toIllustration() {
-      this.$router.push({ name: 'illustration'});
+      this.$router.push({ name: 'illustration' });
     },
     toSoftware() {
-      this.$router.push({ name: 'software'});
+      this.$router.push({ name: 'software' });
     }
   }
 }
 </script>
 
 <style scoped>
-.container {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 20vh;
-  gap: 6vh;
-}
-
-.box1 {
-  /* background-color: hsl(241, 100%, 86%); */
-  height: 20vh;
-
-  position: relative;
-}
-
+/* Consolidated */
 .banner {
   height: 20vh;
   width: 100%;
-  
+
   object-fit: cover;
-
-  border-radius: 10px;
 }
 
-.box2 {
-  /* background-color: hsl(241, 100%, 82%); */
-  height: 20vh;
-
-  position: relative;
-}
-
-.box3 {
-  /* background-color: hsl(241, 100%, 75%); */
-  height: 20vh;
-
-  position: relative;
-}
-
-main {
-  /* background-color: pink; */
-  margin-left: 3vw;
-  margin-top: auto;
-  margin-bottom: auto;
+.banner:hover {
+  cursor: pointer;
 }
 
 .text-context {
-  background-color: rgba(0, 5, 30, 0.5);
-  color: white;
-  cursor: pointer;
-
-  height: 20vh;
-  width: 100%;
-
-  opacity: 0;
-  -webkit-transition: opacity 500ms;
-  -moz-transition: opacity 500ms;
-  -o-transition: opacity 500ms;
-  transition: opacity 500ms;
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-
-  /* display: table; */
   text-align: center;
-
-  border-radius: 10px;
 }
 
-/* THIS is the fix, by the way - I just have to coordinate font size with padding to get it to scale within an absolutely positioned div! */
 .text-context h1 {
-  font-size: 6vh;
+  font-size: 3vh;
+  letter-spacing: 10px;
 
-  padding-top: 5.5vh;
-  padding-bottom: 6.5vh; /* This seems to functionally add up to 20vh - not entirely sure why, I assume I have 1vh of some kind of margin active somewhere though */
+  padding-bottom: 3vh;
 }
 
-span.text-context:hover  {
-  opacity: 1;
-}
 
+/* Small devices (Phones below 600px) */
+@media only screen and (max-width: 600px) {}
+
+/* Large phones and tablets (above 600px) */
+@media only screen and (min-width: 600px) {}
+
+/* Large tablets and all desktops (above 1180px) */
+@media only screen and (min-width: 1180px) {
+  .container {
+    /* Percents don't work here - these values are the same as #routerView in App.vue */
+    width: 68vw;
+    height: 90vh;
+
+    padding: 7.5vh 0;
+  }
+
+  .bannerBox {
+    height: 25vh;
+
+    position: relative;
+    display: flex;
+    /* background-color: rgb(177, 128, 177); */
+  }
+
+  .banner {
+    height: 20vh;
+    width: 100%;
+    border-radius: 10px;
+
+    align-self: center;
+  }
+
+  .text-context {
+    background-color: rgba(0, 5, 30, 0.5);
+    color: white;
+    cursor: pointer;
+
+    height: 20vh;
+    width: 100%;
+
+    opacity: 0;
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    transition: opacity 500ms;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+
+    border-radius: 10px;
+  }
+
+  .text-context h1 {
+    font-size: 6vh;
+    letter-spacing: 20px;
+
+    padding-top: 6vh;
+    padding-bottom: 6vh;
+  }
+
+  span.text-context:hover {
+    opacity: 1;
+  }
+}
 </style>

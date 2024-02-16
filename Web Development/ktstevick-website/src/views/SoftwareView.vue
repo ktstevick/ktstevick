@@ -1,32 +1,3 @@
-<!-- This one is a little different from the others, since programs don't necessarily have or NEED images -->
-<!-- I'd like to havea  brief description of each project IN my GitHub, as well as a video demo of Plants and GemQuest at some point -->
-<!-- In addition, this page will include the JavaScript demos for fun. Right now I just want to connect to a 3rd party API. -->
-
-<!-- So, what do I need to make this happen? -->
-
-<!-- Let's start with the obvious - what projects ARE in your GitHub? It makes sense to break things into categories, I think. -->
-
-<!-- PERSONAL PROJECTS -->
-    <!-- PKMN Damage Calculator -->
-    <!-- Assessment Reflections -->
-    <!-- GEMQUEST --> <!-- VIDEO -->
-
-<!-- TE CAPSTONES -->
-    <!--First Capstone -->
-    <!-- Second Capstone -->
-    <!-- Third Capstone --> <!-- VIDEO -->
-
-<!-- WEB DEVELOPMENT -->
-    <!-- This site, obviously -->
-    <!-- JavaScript Apps -->
-
-<!-- Which, honestly? ISN'T that much to talk about. -->
-
-<!-- The REAL challenge for this page is that everything else fits neatly into a single page. How could I arrange this so we never had to scroll? -->
-
-<!-- I have a few really cool ideas for this - chief among them is the Manilla Folder approach, with tabs for each section and that whole part of the grid dedicated to the description... -->
-<!-- But I think for now I'm going to keep it pretty bare bones. Fix the links, write a good intro, and then encourage viewers to go to the GitHub themselves. -->
-
 <template>
   <main>
     <div class="container">
@@ -35,7 +6,7 @@
         <p>
           &nbsp; This page is a bit different from the others. My team projects, Tech Elevator capstones, and personal
           projects are all available for review
-          on my GitHub page - the link for which can be found on the right, but also below the title card on the left.
+          on my GitHub page - the link for which is provided here, but it's also accessible from every page on the site.
           These are just a few quick notes to pique
           your interest, get your attention, or otherwise let you know these projects might be worth a closer look.
         </p>
@@ -46,39 +17,12 @@
         </p>
       </div>
 
-      <!-- Links can all be found here -->
-      <div class="box2">
-
-        <div class="link" v-on:click="toGitHub">
-          <span class="text-context">
-            <h1>GitHub</h1>
-          </span>
-        </div>
-
-        <div class="link" v-on:click="toFineArts">
-          <img class="banner" src="../assets/images/banner1.jpg" />
-          <span class="text-context">
-            <h1>Fine Arts</h1>
-          </span>
-        </div>
-
-        <div class="link" v-on:click="toIllustration">
-          <img class="banner" src="../assets/images/banner2.jpg" />
-          <span class="text-context">
-            <h1>Illustration</h1>
-          </span>
-        </div>
-
-        <div class="link" v-on:click="dadJoke">
-          <span class="text-context">
-            <h1>Dad Jokes</h1>
-          </span>
-        </div>
-      </div>
-
       <!-- It might be worth making these link straight to the projects, but I don't want to oversaturate the page with redirection - OR reflection. Finding the right balance between saying too much and too little will take time. -->
       <div class="box3">
         <h2>TE Capstones</h2>
+
+        <!-- Pictures from the Green Thumb project -->
+        <CarouselBase class="carousel" v-bind:gallery="this.$store.state.green_thumb" />
 
         <h3>The Green Thumb</h3>
         <p>
@@ -113,6 +57,15 @@
       <div class="box4">
         <h2>Personal Projects</h2>
 
+        <h3>ktstevick.com</h3>
+        <p>
+          &nbsp; This site was built with Vue3, with custom components from <span
+            v-on:click="toCarouselSource">here</span>, and
+          utilizes axios for 3rd party API calls. There's only one at the moment - click on the purple box to
+          receive a random "Dad Joke" from the incredible <span v-on:click="toDadJokeAPI">icanhazdadjoke API.</span> (It
+          should be noted that while I may personally find these hilarious, my dad by no means endorses these jokes!)
+        </p>
+
         <h3>PKMN Damage Calculator</h3>
         <p>
           &nbsp; This application is a demonstration of a very popular game's damage engine, reverse engineered by myself
@@ -120,19 +73,51 @@
           Gameboy Color in order to return accurate results.
         </p>
 
-        <h3>ktstevick.com</h3>
-        <p>
-          &nbsp; This site was built with Vue3, with custom components from here, and
-          utilizes axios for 3rd party API calls. There's only one at the moment - click on the purple box to
-          receive a random "Dad Joke" from this API.
-        </p>
+        <!-- Pictures from GemQuest -->
+        <CarouselBase class="carousel" v-bind:gallery="this.$store.state.gem_quest" />
 
         <h3>GemQuest</h3>
         <p>
-          &nbsp; A classic RPG with a few twists, currently in development by Ian Bird (whose GitHub can be found here)
+          &nbsp; A classic RPG with a few twists, currently in development by <span v-on:click="toBirdGitHub">Ian
+            Bird</span> (whose GitHub is linked)
           and myself. There is a LOT more to say about this and a playable demo on the way, so please check it out on
           GitHub!
         </p>
+      </div>
+
+      <!-- Links can all be found here -->
+      <div id="linkOne" v-on:click="toGitHub">
+        <img class="bannerIcon" src="../assets/icons/githubiconbanner.png" title="gitHub Icon" />
+        <span class="text-context">
+          <h1>My GitHub</h1>
+        </span>
+      </div>
+
+      <div id="linkTwo" v-on:click="getDadJoke">
+        <span class="text-context">
+          <h1>Dad Joke API Call</h1>
+        </span>
+      </div>
+
+      <div id="linkThree" v-on:click="toBirdGitHub">
+        <img class="bannerIcon" src="../assets/icons/githubiconbanner.png" title="gitHub Icon" />
+        <span class="text-context">
+          <h1>Ian Bird's</h1>
+        </span>
+      </div>
+
+      <div id="linkFour" v-on:click="toFineArts">
+        <img class="banner" src="../assets/images/banner1.jpg" />
+        <span class="text-context">
+          <h1>Fine Arts</h1>
+        </span>
+      </div>
+
+      <div id="linkFive" v-on:click="toIllustration">
+        <img class="banner" src="../assets/images/banner2.jpg" />
+        <span class="text-context">
+          <h1>Illustration</h1>
+        </span>
       </div>
     </div>
   </main>
@@ -140,8 +125,13 @@
   
 <script>
 import jokeService from '../services/jokeService.js'
+import CarouselBase from '@/components/CarouselBase.vue'
 
 export default {
+  components: {
+    CarouselBase
+  },
+
   data() {
     return {
       joke: ''
@@ -169,7 +159,17 @@ export default {
     toGitHub() {
       window.location.href = 'https://github.com/ktstevick/ktstevick';
     },
-    dadJoke() {
+    toBirdGitHub() {
+      window.location.href = 'https://github.com/birdmandeveloper';
+    },
+    toCarouselSource() {
+      window.location.href = 'https://ismail9k.github.io/vue3-carousel/getting-started.html';
+    },
+    toDadJokeAPI() {
+      window.location.href = 'https://icanhazdadjoke.com/api';
+    },
+
+    getDadJoke() {
       alert(this.joke);
 
       // API call to set new joke after displaying current one
@@ -185,104 +185,65 @@ export default {
 <style scoped>
 .container {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
   grid-template-areas:
-    "intro intro link"
-    "capstone personal link"
-    "capstone personal link";
-  gap: 6vh;
+    "linkOne"
+    "intro"
+    "capstone"
+    "linkTwo"
+    "personal"
+    "linkThree"
+    "linkFour"
+    "linkFive";
+  gap: 2vh;
 }
 
+/* TEXT */
 .box1 {
-  height: 20vh;
-  width: auto;
-  margin-top: 2vh;
   grid-area: intro;
-
   border-radius: 5px;
 }
 
 .box1 h1 {
+  text-align: center;
+  font-size: 1.7em;
   font-weight: bold;
 
   padding: 10px;
-  border: 2px solid black;
-  border-radius: 5px;
-  margin-bottom: 15px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  /* margin-bottom: 15px; */
 
   color: black;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.box1 p {
-  font-size: 1em;
-
-  margin-left: 15px;
-  margin-right: 15px;
-}
-
-.box2 {
-  height: 60vh;
-  width: 12vw;
-
-  margin-left: .25vw;
-  margin-top: 1.9vh;
-
-  grid-area: link;
-
-  display: grid;
-
-  position: fixed;
-  top: 13vh;
-  left: 75.5vw;
-}
-
-.link {
-  height: 12vh;
-  position: relative;
-
-  background-color: hsla(263, 74%, 47%, 0.726);
-  border-radius: 5px;
+  background-color: rgb(140, 140, 140);
 }
 
 .box3 {
-  height: 47vh;
-  margin-top: 10px;
   grid-area: capstone;
-
   border-radius: 5px;
 }
 
 .box4 {
-  height: 47vh;
-  margin-top: 10px;
   grid-area: personal;
-
   border-radius: 5px;
-}
-
-main {
-  margin-left: 3vw;
-  margin-top: auto;
-  margin-bottom: auto;
 }
 
 h2 {
+  text-align: center;
+  font-size: 1.5em;
   font-weight: bold;
 
-  margin-top: 10px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
   padding: 10px;
-  border: 2px solid black;
-  border-radius: 5px;
 
   color: black;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgb(170, 170, 170);
 }
 
 h3 {
   color: black;
 
-  margin-top: 10px;
+  margin: 10px 5px 0 5px;
   padding: 10px;
 
   border-top-left-radius: 10px;
@@ -290,26 +251,26 @@ h3 {
 
   font-weight: bold;
 
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgb(200, 200, 200);
 }
 
 p {
-  padding: 10px;
+  margin: 0 5px;
+  padding: 5px 10px 10px 10px;
 
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgb(225, 225, 225);
 }
 
 .box1 p:first-of-type {
+  margin-top: 2vh;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 0px;
 
   color: black;
-  background-color: rgba(0, 0, 0, 0.25);
 }
 
 .box1 p {
@@ -319,26 +280,87 @@ p {
   border-bottom-left-radius: 10px;
 
   color: black;
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgb(200, 200, 200);
+}
+
+/* COMPONENTS */
+.carousel {
+  width: 100vw;
+  margin-top: 15px;
+}
+
+/* LINKS */
+#linkOne {
+  background-color: black;
+  height: 12vh;
+  margin-top: 2vh;
+  position: relative;
+  grid-area: linkOne;
+}
+
+#linkTwo {
+  background-color: rgb(226, 214, 255);
+  height: 12vh;
+  position: relative;
+  grid-area: linkTwo;
+}
+
+#linkThree {
+  background-color: black;
+  height: 12vh;
+  position: relative;
+  grid-area: linkThree;
+}
+
+#linkFour {
+  background-color: rgb(255, 214, 221);
+  height: 12vh;
+  position: relative;
+  grid-area: linkFour;
+}
+
+#linkFive {
+  background-color: rgb(255, 214, 221);
+  height: 12vh;
+  margin-bottom: 1vh;
+  position: relative;
+  grid-area: linkFive;
 }
 
 .banner {
   height: 12vh;
-  width: 12vw;
+  width: 100%;
 
   object-fit: cover;
-  border-radius: 5px;
 }
 
+.bannerIcon {
+  height: 90%;
+  margin: .6vh;
+  /* padding-left: 13vw; */
+  padding-left: 65%;
+}
+
+#linkOne .text-context {
+  background-color: rgba(0, 0, 0, 0);
+    text-align: left;
+    padding-left: 15%;
+  }
+
+  #linkThree .text-context {
+    background-color: rgba(0, 0, 0, 0);
+    text-align: left;
+    padding-left: 20%;
+  }
+
 .text-context {
-  background-color: rgba(0, 5, 30, 0.5);
-  color: white;
+  background-color: rgba(0, 5, 30, 0.25);
+  color: rgb(245, 245, 245);
   cursor: pointer;
 
   height: 12vh;
-  width: 12vw;
+  width: 100%;
 
-  opacity: 0;
   -webkit-transition: opacity 500ms;
   -moz-transition: opacity 500ms;
   -o-transition: opacity 500ms;
@@ -349,21 +371,178 @@ p {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  display: table;
   text-align: center;
-
-  border-radius: 5px;
 }
 
 .text-context h1 {
-  font-size: 3vh;
+  font-size: 4vh;
 
-  padding-top: 3.75vh;
-  padding-bottom: 4.25vh;
+  padding-top: 3vh;
+  padding-bottom: 4vh;
 }
 
-span.text-context:hover {
-  opacity: 1;
+.box4 span {
+  color: rgb(94, 49, 255);
+  transition: 0.4s;
+
+  padding: 2px;
+}
+
+.box4 span:hover {
+  text-decoration: none;
+  background-color: hsla(241, 100%, 50%, 0.2);
+
+  cursor: pointer;
+}
+
+/* Small devices (Phones below 600px) */
+@media only screen and (max-width: 600px) {}
+
+/* Large phones and tablets (above 600px) */
+@media only screen and (min-width: 600px) {
+  .text-context h1 {
+    font-size: 3vh;
+
+    padding-top: 3.75vh;
+    padding-bottom: 4.25vh;
+  }
+
+  .bannerIcon {
+  padding-left: 55%;
+}
+
+#linkOne .text-context {
+    padding-left: 30%;
+  }
+
+  #linkThree .text-context {
+    padding-left: 35%;
+  }
+}
+
+/* Large tablets and all desktops (above 1180px) */
+@media only screen and (min-width: 1180px) {
+  .container {
+    /* background-color: pink; */
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "intro intro"
+      "capstone personal"
+      "capstone personal"
+      "capstone personal"
+      "capstone personal"
+      "capstone personal";
+    /* !!! */
+    gap: 1vw;
+  }
+
+  .box1 {
+    width: 45vw;
+  }
+
+  .box1 h1 {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-radius: 5px;
+  }
+
+  .box3 {
+    width: 22vw;
+    padding-bottom: 12vh;
+  }
+
+  .box4 {
+    width: 22vw;
+    padding-bottom: 12vh;
+  }
+
+  h2 {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-radius: 5px;
+  }
+
+  .carousel {
+    width: 22vw;
+  }
+
+  #linkOne {
+    width: 22vw;
+    margin-top: 0;
+    border-radius: 10px;
+
+    /* Currently eyeballed */
+    position: fixed;
+    left: 74vw;
+    top: 12vh;
+  }
+
+  #linkTwo {
+    width: 22vw;
+    border-radius: 10px;
+
+    position: fixed;
+    left: 74vw;
+    top: 28vh;
+  }
+
+  #linkThree {
+    width: 22vw;
+    border-radius: 10px;
+
+    position: fixed;
+    left: 74vw;
+    top: 44vh;
+  }
+
+  #linkFour {
+    width: 22vw;
+    border-radius: 10px;
+
+    position: fixed;
+    left: 74vw;
+    top: 60vh;
+  }
+
+  #linkFive {
+    width: 22vw;
+    margin-bottom: 0;
+    border-radius: 10px;
+
+    position: fixed;
+    left: 74vw;
+    top: 76vh;
+  }
+
+  .banner {
+    border-radius: 10px;
+  }
+
+  .bannerIcon {
+    padding-left: 13vw;
+  }
+
+  #linkOne .text-context {
+    padding-left: 2vw;
+  }
+
+  #linkThree .text-context {
+    padding-left: 2vw;
+  }
+
+  .text-context {
+    opacity: 0;
+    border-radius: 10px;
+
+    text-align: left;
+    padding-left: 2vw;
+  }
+
+  span.text-context:hover {
+    opacity: 1;
+  }
 
 }
 </style>

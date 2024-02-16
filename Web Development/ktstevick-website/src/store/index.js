@@ -35,9 +35,25 @@ import jf2 from '../assets/images/jf2.jpg'
 import jf3 from '../assets/images/jf3.jpg'
 import jf4 from '../assets/images/jf4.jpg'
 
+// Green Thumb Website
+import green1 from '../assets/images/greenthumb1.jpg'
+import green2 from '../assets/images/greenthumb2.jpg'
+import green3 from '../assets/images/greenthumb3.jpg'
+import green4 from '../assets/images/greenthumb4.jpg'
+
+// GemQuest
+import quest1 from '../assets/images/gemquest1.jpg'
+import quest2 from '../assets/images/gemquest2.jpg'
+import quest3 from '../assets/images/gemquest3.jpg'
+import quest4 from '../assets/images/gemquest4.jpg'
+import quest5 from '../assets/images/gemquest5.jpg'
+
 export function createStore() {
   return _createStore({
     state: {
+        // This should let me track screen size with JavaScript and use it for v-ifs and v-shows later
+        bigMode: true,
+
         // All gallery components draw from these arrays in one way or another. This is where all the images are organized and stored
         fine_art: [
             {
@@ -147,10 +163,65 @@ export function createStore() {
                 image: jf4
             },
         ],
+
+        green_thumb: [
+            {
+                id: 1,
+                title: 'gt1',
+                image: green1
+            },
+            {
+                id: 2,
+                title: 'gt2',
+                image: green2
+            },
+            {
+                id: 3,
+                title: 'gt3',
+                image: green3
+            },
+            {
+                id: 4,
+                title: 'gt4',
+                image: green4
+            },
+        ],
+
+        gem_quest: [
+            {
+                id: 1,
+                title: 'gq1',
+                image: quest1
+            },
+            {
+                id: 2,
+                title: 'gq2',
+                image: quest2
+            },
+            {
+                id: 3,
+                title: 'gq3',
+                image: quest3
+            },
+            {
+                id: 4,
+                title: 'gq4',
+                image: quest4
+            },
+            {
+                id: 5,
+                title: 'gq5',
+                image: quest5
+            },
+        ],
     },
 
     // Et alia
-    mutations: {},
+    mutations: {
+        UPDATE_BIGMODE(state, payload) {
+            state.bigMode = payload; 
+        }
+    },
     actions: {},
     modules: {},
 
