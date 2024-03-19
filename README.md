@@ -15,4 +15,4 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 
-My name is Kurtis Stevick, I'm a software developer and artist originally from the Chicago area. Currently getting this repository up and running. Everything will be private, but I'm happy to provide access to friends/peers/potential employers as requested.
+My name is Kurtis Stevick, I'm a software developer and artist originally from the Chicago area. Currently getting this repository up and running.
