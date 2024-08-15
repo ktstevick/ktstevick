@@ -1,0 +1,9 @@
+ERROR CODES
+001: "GamePanel.java"
+002: "/entity/Entity.java"
+003: "tile/TileManager.java"
+004: "tile/TileManager.java"
+005: "object/OBJ_Apple.java"
+006: "object/OBJ_Banana.java"
+007: "object/OBJ_.java"
+008: "UI.java"
