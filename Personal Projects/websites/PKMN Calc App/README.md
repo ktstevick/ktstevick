@@ -26,7 +26,7 @@ Calculator - Click the Calc link, but also reachable by clicking the large image
 Details - Reached by clicking cards on the List page, or by clicking either Pokemon's image in the Calculator page
 ```
 
-![EXTERNAL NAVIGATION](https://i.imgur.com/oqYeG8U.jpeg)
+![EXTERNAL NAVIGATION](https://i.imgur.com/CsATHTj.png)
 ```
 Bulbapedia - Link available on Home page
 Smogon - Likewise
