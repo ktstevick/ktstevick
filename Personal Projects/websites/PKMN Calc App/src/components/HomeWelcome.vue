@@ -4,27 +4,44 @@
       <h1>HOME</h1>
       <hr>
       <p>This is the Home Page! Welcome to the party.</p>
-      <p>This is where the general introductions will go. I'll explain a bit about the project maybe? Not totally sure
-        yet.</p>
+      <p>This space is for general introduction and/or updates.</p>
+      <p>Head on over to <RouterLink to="/list">List</RouterLink> to see all the Pokemon, or straight to <RouterLink
+          to="/calc/1">Calc</RouterLink> to get cooking!</p>
     </div>
 
     <div id="about">
       <h1>ABOUT</h1>
       <hr>
-      <p>This is the About section. It's about exactly what you might imagine.</p>
-      <p>More for technical stuff too - like exactly what is an isn't being factored into calculations, etc.</p>
+      <p>More details available on my GitHub README, but the short version is that this app aims to let users read parts
+        of the PokeAPI and use this data to check damage calculations against standard and custom sets.</p>
+      <p>On a technical side, the rolls themselves may not be 100% accurate. The math isn't terribly complicated but
+        definitely more nuanced than it seems. On a similar note, some features of the battle system simply haven't been
+        implemented yet:</p>
+      <li>Items</li>
+      <li>Weather</li>
+      <li>Critical Hits</li>
+      <li>Multi-hit Moves</li>
+      <li>Spread Damage</li>
+      <li>Generational Gimmicks</li>
+      <li>Et Alia</li>
+      <p>As one might imagine, Pokemon was developed by teams of highly trained (and paid) professionals over the course
+        of decades, and even most fan projects are extremely well put together. As much as I'd love to implement these
+        features, this is just a fun app I made in my free time. Thanks for dropping by!</p>
     </div>
 
     <div id="links">
       <h1>LINKS</h1>
       <hr>
-      <p>This area is for Links.</p>
-      <p>I'm thinking one for GitHub, one for Smogon, one for Bulbapedia, et alia.</p>
+      <p>See also:</p>
+      <a href="https://bulbapedia.bulbagarden.net/wiki/Main_Page">Bulbapedia</a>
+      <p>Great source for additional general information about Pokemon, the games, and more.</p>
+      <a href="https://www.smogon.com/">Smogon</a>
+      <p>The definitive resource for competitive Pokemon, including sets, formulas, and usage statistics.</p>
     </div>
   </main>
 </template>
 
-<script setup>
+<script>
 </script>
 
 <style scoped>
@@ -43,16 +60,37 @@ main div {
 #intro {
   background-color: rgb(177, 255, 197);
   grid-area: intro;
+  border-radius: 10px;
 }
 
 #about {
-  background-color: rgb(160, 231, 178);
+  background-color: rgb(180, 238, 195);
   grid-area: about;
+  border-radius: 10px;
 }
 
 #links {
-  background-color: rgb(135, 196, 150);
+  background-color: rgb(157, 211, 171);
   grid-area: links;
+  border-radius: 10px;
+}
+
+#links a {
+  font-size: large;
+  font-weight: bold;
+  padding: 10px;
+}
+
+h1 {
+  padding-left: 10px;
+}
+
+p {
+  padding: 10px;
+}
+
+li {
+  padding: 10px;
 }
 
 @media only screen and (max-width: 768px) {

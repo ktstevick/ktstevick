@@ -9,9 +9,18 @@
         <div id="info">
             <div>
                 <h2>Stats:</h2>
+                <p>HP: {{ stats[0] }} </p>
+                <p>Atk: {{ stats[1] }} </p>
+                <p>Def: {{ stats[2] }} </p>
+                <p>SpA: {{ stats[3] }} </p>
+                <p>SpD: {{ stats[4] }} </p>
+                <p>Speed: {{ stats[5] }} </p>
             </div>
             <div>
                 <h2>Abilities:</h2>
+                <li v-for="ability in abilitiesArray" :key="ability.id">
+                    {{ ability.name }}
+                </li>
             </div>
         </div>
 
@@ -24,12 +33,12 @@
 
         <div id="gallery">
             <h2>Gallery:</h2>
-            <img :src="img">
-        </div>
-
-        <div id="seeAlso">
-            <h2>See Also:</h2>
-            <p>Placeholder text - this will link to other Pokemon or searches</p>
+            <div v-for="generation in galleryArray" :key="generation">
+                <hr>
+                <div v-for="game in generation.games" :key="game">
+                    <img v-for="sprite in game.sprites" :src="sprite" :key="sprite">
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -50,8 +59,18 @@ export default {
             name: "",
             displayID: "",
             img: "",
+            stats: [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
 
-            movesArray: []
+            abilitiesArray: [],
+            movesArray: [],
+            galleryArray: []
         }
     },
 
@@ -62,8 +81,39 @@ export default {
                     this.name = utilityTool.nameFormatter(response.data.name);
                     this.img = response.data.sprites.front_default;
 
+                    for (let i = 0; i < response.data.stats.length; i++) {
+                        this.stats[i] = response.data.stats[i].base_stat;
+                    }
+
+                    for (let i = 0; i < response.data.abilities.length; i++) {
+                        const abilityObj = {};
+                        abilityObj.name = utilityTool.nameFormatter(response.data.abilities[i].ability.name);
+                        abilityObj.id = utilityTool.abilityIdSelector(response.data.abilities[i].ability.url);
+
+                        this.abilitiesArray[i] = abilityObj;
+                    }
+
                     for (let i = 0; i < response.data.moves.length; i++) {
                         this.movesArray.push(utilityTool.nameFormatter(response.data.moves[i].move.name));
+                    }
+                
+                    for(let genKey in response.data.sprites.versions) {
+                        let generationObj = {};
+                        generationObj.games = [];
+
+                        for(let gameKey in response.data.sprites.versions[genKey]) {
+                            let thisGame = response.data.sprites.versions[genKey][gameKey];
+                            let gameObj = {};
+                            gameObj.sprites = [];
+
+                            for(let spriteKey in thisGame) {
+                                gameObj.sprites.push(thisGame[spriteKey]);
+                            }
+
+                            generationObj.games.push(gameObj);
+                        }
+
+                        this.galleryArray.push(generationObj);
                     }
                 })
         }
@@ -80,7 +130,9 @@ export default {
 #hero {
     background-color: rgb(255, 184, 78);
 
-    border-radius: 10px;
+    margin-top: 10px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 
     display: flex;
     align-items: flex-end;
@@ -92,20 +144,24 @@ export default {
 
 #info {
     background-color: rgba(255, 184, 78, 0.75);
+
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
 #moveList {
     background-color: rgba(255, 184, 78, 0.5);
+    border-radius: 10px;
 }
 
 #gallery {
-    background-color: rgba(255, 184, 78, 0.25);
-}
-
-#seeAlso {
-    background-color: rgba(255, 184, 78, 0.1);
+    margin: 10px;
+    border: 5px solid orange;
+    border-radius: 10px;
+    padding: 10px 25px;
 }
 
 @media only screen and (max-width: 768px) {

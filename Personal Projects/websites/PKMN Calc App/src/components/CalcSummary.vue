@@ -57,8 +57,6 @@
 import utilityTool from '@/misc/utilityTool';
 import customPKMN from './CustomPKMN.vue';
 
-// const smallScreen = utilityTool.useMatchMedia('(max-width: 768px)');
-
 export default {
   data() {
     return {
@@ -196,7 +194,7 @@ main {
     "custom1 custom2";
 
   width: 80vw;
-  margin: auto;
+  margin-left: 12vw;
   padding-top: 3vh;
   text-align: center;
 }
@@ -208,6 +206,11 @@ main {
   width: 35vw;
 
   grid-area: custom1moves;
+}
+
+#custom1moves div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 #custom1moves div:hover {
@@ -222,6 +225,11 @@ main {
   width: 35vw;
 
   grid-area: custom2moves;
+}
+
+#custom2moves div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 #custom2moves div:hover {

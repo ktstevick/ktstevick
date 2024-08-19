@@ -1,0 +1,44 @@
+@import './base.css';
+
+/* Consolidating styles beyond base.css here */
+#app {
+  position: relative;
+}
+
+/* This unfortunately doesn't have the window size limiting effect I was hoping for. I'll likely have to add an event listener and resize the window with JavaScript */
+body {
+  min-height: 480px;
+  min-width: 320px;
+  color: black;
+}
+
+/* General link styling */
+a {
+  text-decoration: none;
+  color: rgb(94, 49, 255);
+  transition: 0.4s;
+  padding: 2px;
+}
+
+/* Subtle tone shifts between views */
+
+/* Small devices (Phones below 600px) */
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: rgb(245, 242, 245);
+  }
+}
+
+/* Large phones and tablets (above 600px) */
+@media only screen and (min-width: 600px) {
+  body {
+    background-color: rgb(242, 245, 245);
+  }
+}
+
+/* Large tablets and all desktops (above 1024px) */
+@media only screen and (min-width: 1024px) {
+  body {
+    background-color: rgb(245, 245, 242);
+  }
+}
