@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import utilityTool from '../misc/utilityTool';
+import utilityTool from '@/misc/utilityTool';
 import customPKMN from './CustomPKMN.vue';
 
 export default {

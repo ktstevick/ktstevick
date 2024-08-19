@@ -1,33 +1,21 @@
 {
-  "name": "pkmncalcapp",
-  "homepage": "https://ktstevick.github.io",
-
-  "version": "0.0.0",
+  "name": "-latest",
   "private": true,
+  "version": "0.0.0",
   "type": "module",
-
   "scripts": {
     "dev": "vite",
-
     "build": "vite build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-
-    "preview": "vite preview",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+    "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^1.7.2",
-    "vue": "^3.4.29",
-    "vue-router": "^4.3.3",
+    "axios": "^1.7.4",
+    "vue": "^3.4.37",
+    "vue-router": "^4.4.3",
     "vuex": "^4.1.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.5",
-    "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.23.0",
-    "gh-pages": "^6.1.1",
-    "vite": "^5.3.1",
-    "vite-plugin-vue-devtools": "^7.3.1"
+    "@vitejs/plugin-vue": "^5.1.2",
+    "vite": "^5.4.1"
   }
 }

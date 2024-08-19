@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import pokemonService from '../services/pokemonService';
+import pokemonService from '@/services/pokemonService';
 import utilityTool from "../misc/utilityTool.js";
 
 export default {

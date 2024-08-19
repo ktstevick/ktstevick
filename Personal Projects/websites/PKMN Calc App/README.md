@@ -11,7 +11,7 @@ This app is a more user friendly, web oriented version of my original [Pokemon C
 
 ## Installation
 
-None required - This application is viewable [here!](https://ktstevick.github.io/)
+None required - This application is viewable [here!](https://ktstevick.github.io/test-site/)
 
 ## Navigation
 ![BASIC NAVIGATION](https://i.imgur.com/QTZh2n2.png)

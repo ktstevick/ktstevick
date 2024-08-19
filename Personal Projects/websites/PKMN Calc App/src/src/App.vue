@@ -1,7 +1,7 @@
 <template>
   <main>
     <header>
-      <img alt="Green Pokedex Painting" class="logo" src="./assets/images/greentwo.png" width="500" height="250"
+      <img alt="Green Pokedex Painting" class="logo" src="@/assets/images/greentwo.png" width="500" height="250"
         @click="this.$router.push({ name: 'home' })" />
 
       <div class="wrapper">
