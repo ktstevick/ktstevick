@@ -2,9 +2,7 @@ package stevick.pokemon;
 
 import stevick.types.Nature;
 
-// I'm gonna have to change this to a DAO now that I know that's a thing
 public class Pokemon {
-    // Basic information about this Pokemon. Still not 100% sure how I'm going to use nature here, this is just a placeholder
     private String name = "";
     private String type1 = "";
     private String type2 = "";
@@ -19,7 +17,7 @@ public class Pokemon {
     private int BASE_SPD = 0;
     private int BASE_SPEED = 0;
 
-    // IV variables. All set to 31, but eventually you'll be able to adjust them. Maybe. Leaving them final for the time being
+    // IV variables. All set to 31, but eventually they'll be adjustable
     private int IV_FOR_HP = 31;
     private int IV_FOR_ATK = 31;
     private int IV_FOR_DEF = 31;
@@ -35,7 +33,6 @@ public class Pokemon {
     private int evTotalSpD = 0;
     private int evTotalSpeed = 0;
 
-    // Getters and setters. Not all of these have setters right now. Be mindful!
     public String getName() {
         return name;
     }
@@ -96,13 +93,11 @@ public class Pokemon {
     public int getEffectiveHP() {
         int effectiveHP = 0;
 
-        // GameFreak was on some CRAZY drugs in the late eighties
         effectiveHP = (((((2 * BASE_HP) + IV_FOR_HP + (evTotalHP / 4)) * LEVEL) / 100) + LEVEL + 10);
 
         return effectiveHP;
     }
     public int getEffectiveAttack() {
-        // I'm thinking THIS is actually where we'd wanna put a Nature conditional, to check if it boosts this stat. Not today tho
         int effectiveAttack = 0;
 
         effectiveAttack = (int)((((((2 * BASE_ATK) + IV_FOR_ATK + (evTotalAtk / 4)) * LEVEL) / 100) + 5) * this.nature.getAtkMultiplier());
@@ -119,12 +114,10 @@ public class Pokemon {
     public int getEffectiveSpDef() {
         return (int)((((((2 * BASE_SPD) + IV_FOR_SPD + (evTotalSpD / 4)) * LEVEL) / 100) + 5) * this.nature.getSpdMultiplier());
     }
-    // Speed Getter goes unused for now
     public int getEffectiveSpeed() {
         return (int)((((((2 * BASE_SPEED) + IV_FOR_SPEED + (evTotalSpeed / 4)) * LEVEL) / 100) + 5) * this.nature.getSpeedMultiplier());
     }
 
-    // Constructor. This is gonna be a beast, but the user doesn't see any of this stuff
     public Pokemon(String name, int baseHP, int baseAtk, int baseDef, int baseSpA, int baseSpD, int baseSpeed, String type1, String type2, Nature nature) {
         this.name = name;
         this.BASE_HP = baseHP;
@@ -135,8 +128,6 @@ public class Pokemon {
         this.BASE_SPEED = baseSpeed;
         this.type1 = type1;
         this.type2 = type2;
-
-        // This gets a bit tricky with the nature, bear with me
         this.nature = nature;
     }
 }

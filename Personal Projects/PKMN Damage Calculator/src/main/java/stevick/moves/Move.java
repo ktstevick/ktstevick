@@ -6,7 +6,6 @@ public class Move {
     private String type = "";
     private String property = "";
 
-    // Short list huh? Let's see some getters
     public String getName() {
         return name;
     }

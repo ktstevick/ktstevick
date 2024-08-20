@@ -8,15 +8,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-/*  10/25/23 - Main focus now is shifting to MVC model, implementing DAOs and API accessibility, and making a menu.
-    Big picture, I'm thinking the menu has three main functions, viewing created Pokemon, making new Pokemon sets, and then
-    displaying calculations after choosing the two Pokemon. Displaying the list when selecting will likely be necessary also,
-    but the actual code for the menu shouldn't be too complicated. I'll have to encapsulate these functions further as well
-
- */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("I want to be the very best!"); // Essentially just nostalgia
+        System.out.println("I want to be the very best!");
 
         // Scanner and File Objects, then the first few Variables
         Scanner userInput = new Scanner(System.in);
@@ -68,8 +62,7 @@ public class Main {
         This kind of approach is fine for a CLI, but the truth is that things would be much simpler if the user could only
         select from a pre-determined list. I'll have to think on it more as I learn. At this stage, I think changing the interface
         so that the user creates multiple Pokemon, and can then arrange them at will, will facilitate testing. No sense prompting
-        for the same information every time, let alone new and redundant information!
-         */
+        for the same information every time, let alone new and redundant information */
         System.out.println("Attacking Pokemon: ");
         attackerName = userInput.nextLine();
 
@@ -111,11 +104,6 @@ public class Main {
 
         // Pokemon and Pokemon trait assignments
         try (Scanner dexScanner = new Scanner(dexFile)) {
-            /* We got it! We're in! ...now what? I'm thinking we loop through the text file, first looking for the attacker, and
-            THEN the defender, then instantiate two unique Pokemon objects. Ooh, actually, we're going to declare the necessary
-            variables up by the names, then fill the values from inside this loop, THEN instantiate the objects after the loop
-             */
-
             // @TODO: write better catches to handle exceptions before moving on to the next stage!
 
             while(dexScanner.hasNextLine()) {
@@ -135,8 +123,6 @@ public class Main {
 
                     attackerType1 = attackerData[8];
                     attackerType2 = attackerData[9];
-
-                    // I'll add a line to add Nature later
                 }
 
                 if (dexLine.contains(defenderName)) {
@@ -176,8 +162,7 @@ public class Main {
         /* Testing for choice band currently, this implementation SEEMS perfect, but since different items have different
         effects, it's going to be a little more involved than I'd hoped. Can't just tag on a catch-all multiplier at the end
         of the damage calc. For type-boosting items, I'll have to directly manipulate the move's base power, and for stat changers,
-        we'll have to change the stat as we retrieve it.
-         */
+        we'll have to change the stat as we retrieve it. */
         double itemMultiplier = 1.5;
 
         // These conditionals check move property and assign EVs accordingly.
@@ -218,7 +203,7 @@ public class Main {
             // ***** BASE DAMAGE FORMULA *****
             int initialDamage = ((((2 * attacker.getLevel()) / 5 + 2) * usedMove.getBasePower() * effectiveAttack) / effectiveDefense) / 50 + 2;
 
-            // ***** MODIFIER MAYHEM *****
+            // ***** MODIFIERS *****
             int randomModified = (initialDamage * (random + i)) / 100; // Because this first modifier always multiplies from .85 - 1.00, the high roll is ALWAYS the value of initialDamage
             int stabModified = (int)(randomModified * stab);
             double typeModified = (stabModified * (typeChart.getTotalMultiplier()));
@@ -261,6 +246,5 @@ public class Main {
         // Interaction summary, value range, percent estimate, and flavor text. Total spread of possible values follow
         System.out.println(interactionDescription + " = " + damageDescription + effectivenessMessage);
         System.out.println("Possible damage amounts: [" + resultsDisplay.substring(0,resultsDisplay.length() - 2) + "]");
-
     }
 }

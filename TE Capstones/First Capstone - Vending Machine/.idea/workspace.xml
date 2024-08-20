@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b68b7e6b-7267-4328-922c-5df6f80c281d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Personal Projects/Revisited Challenges/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Personal Projects/Revisited Challenges/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Personal Projects/PKMN Damage Calculator/src/main/java/stevick/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Personal Projects/PKMN Damage Calculator/src/main/java/stevick/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Personal Projects/PKMN Damage Calculator/src/main/java/stevick/moves/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Personal Projects/PKMN Damage Calculator/src/main/java/stevick/moves/Move.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Personal Projects/PKMN Damage Calculator/src/main/java/stevick/pokemon/Pokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Personal Projects/PKMN Damage Calculator/src/main/java/stevick/pokemon/Pokemon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Personal Projects/PKMN Damage Calculator/src/main/java/stevick/types/Nature.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Personal Projects/PKMN Damage Calculator/src/main/java/stevick/types/Nature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Personal Projects/PKMN Damage Calculator/src/main/java/stevick/types/TypeChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Personal Projects/PKMN Damage Calculator/src/main/java/stevick/types/TypeChart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Personal Projects/PKMN Damage Calculator/target/classes/stevick/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Personal Projects/PKMN Damage Calculator/target/classes/stevick/example/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Personal Projects/PKMN Damage Calculator/target/classes/stevick/moves/Move.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Personal Projects/PKMN Damage Calculator/target/classes/stevick/moves/Move.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Personal Projects/PKMN Damage Calculator/target/classes/stevick/pokemon/Pokemon.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Personal Projects/PKMN Damage Calculator/target/classes/stevick/pokemon/Pokemon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Personal Projects/PKMN Damage Calculator/target/classes/stevick/types/TypeChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Personal Projects/PKMN Damage Calculator/target/classes/stevick/types/TypeChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Personal Projects/Revisited Challenges/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Personal Projects/Revisited Challenges/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Personal Projects/Revisited Challenges/JPMorgan Spin Back.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Personal Projects/Revisited Challenges/Revisited Challenges.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Personal Projects/Revisited Challenges/out/production/JPMorgan Spin Back/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Personal Projects/Revisited Challenges/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Personal Projects/Revisited Challenges/src/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2kvVXvBquO4i1eyLFFZV3HpB1he" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b68b7e6b-7267-4328-922c-5df6f80c281d" name="Changes" comment="" />
+      <created>1724164081470</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1724164081470</updated>
+    </task>
+    <servers />
+  </component>
+</project>

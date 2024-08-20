@@ -1,14 +1,7 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Main {
-
-    // This program exists only to further explore the ideas and concepts I was challenged by during the JPMorgan
-    // code evaluation. I don't have access to the unit tests and so will be confirming manually. In addition, I don't have
-    // exact copies of the problem, so I will be recreating them to the best of my memory. I think it makes the most sense to organize
-    // them as individual methods of this Main class, but that may change as I work.
-
     public static void main(String[] args) {
         // This is where we'll adjust the parameters from.
 
@@ -47,7 +40,6 @@ public class Main {
 
         // INPUT: line handled by method call
         System.out.println("OUTPUT: " + lowCost);
-
     }
 
     // The first challenge was to break a palindrome by changing a single letter within the provided string. You are only
@@ -91,8 +83,6 @@ public class Main {
             char newLetter = singleLetter.charAt(0);
 
             palindromeStrArray[i] = newLetter;
-
-            // System.out.println(palindromeStrArray);
         }
 
         // Checks first half for a letter we can set to A, sets index and updates boolean

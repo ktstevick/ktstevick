@@ -68,8 +68,4 @@ public class Nature {
             this.speedMultiplier = 0.9;
         }
     }
-
-    // Four methods, one for each stat that matters, basically getters? And then the setters are really elaborate?
-
-
 }

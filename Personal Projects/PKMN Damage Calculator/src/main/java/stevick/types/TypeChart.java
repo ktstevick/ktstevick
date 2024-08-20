@@ -24,12 +24,10 @@ public class TypeChart {
         return immunityFlag;
     }
 
-    // I could possibly bake it all into the constructor. I'll see where it makes the most sense. Actually yeah, probably here
     public TypeChart(String moveType, String defenderType1, String defenderType2) {
         this.moveType = moveType;
         this.defenderType1 = defenderType1;
         this.defenderType2 = defenderType2;
-        // This is gonna be a WILD ride
         this.totalMultiplier = typeMultiplier(moveType, defenderType1) * typeMultiplier(moveType, defenderType2);
     }
 
@@ -38,7 +36,6 @@ public class TypeChart {
         double typeMultiplier = 1.0;
 
         if (moveType.equals("Normal")) {
-            // Here's what I'm thinking. One row for resist, one row for super effective, and one for immunities. Defaults to one so no need for an else
             if (defenderType.equals("Rock") || defenderType.equals("Steel")) {
                 typeMultiplier = 0.5;
             }
@@ -104,7 +101,6 @@ public class TypeChart {
                 typeMultiplier = 2.0;
             }
             if (defenderType.equals("Fighting") || defenderType.equals("Flying") || defenderType.equals("Poison") || defenderType.equals("Ghost") || defenderType.equals("Steel") || defenderType.equals("Fire") || defenderType.equals("Fairy")) {
-                // Poor bug types! This is overkill...
                 typeMultiplier = 0.5;
             }
         }
@@ -149,7 +145,6 @@ public class TypeChart {
                 typeMultiplier = 2.0;
             }
             if (defenderType.equals("Flying") || defenderType.equals("Poison") || defenderType.equals("Bug") || defenderType.equals("Steel") || defenderType.equals("Fire") || defenderType.equals("Grass") || defenderType.equals("Dragon")) {
-                // I take it back, GameFreak hates grass types ;3;
                 typeMultiplier = 0.5;
             }
         }
