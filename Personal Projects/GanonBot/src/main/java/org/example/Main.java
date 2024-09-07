@@ -22,7 +22,7 @@ public class Main {
         Map<String, String> textResource = new HashMap<>();
 
         File commandFile = new File("src/main/resources/commands.txt");
-        File configFile = new File("src/main/resources/config.txt");
+        File configFile = new File("../../../../config.txt");
 
         Scanner dataInput;
 
