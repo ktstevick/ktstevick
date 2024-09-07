@@ -99,7 +99,7 @@ public class Main {
         Guild guild = jda.getGuildById(GUILD_ID);
         if(guild != null) {
             // CLASSIC COMMANDS, no prefix
-            guild.upsertCommand("pong", "Test test").queue();
+            guild.upsertCommand("about", "Classic Commands Described").queue();
 
             guild.upsertCommand("jab", "Thunder Punch").queue();
             guild.upsertCommand("ftilt", "Armor Crush").queue();
@@ -143,6 +143,9 @@ public class Main {
             // ABSTRACT COMMANDS
 
             // DEBUG AND MISC.
+            guild.upsertCommand("list", "List of All Lists").queue();
+            guild.upsertCommand("list-classic", "Basic Frame Data").queue();
+
             guild.upsertCommand("misc-ping", "The Classic You All Know and Love").queue();
             guild.upsertCommand("misc-food", "We Need Food!")
                     .addOption(OptionType.STRING, "name", "Name of Food", true)

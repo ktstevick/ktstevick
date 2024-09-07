@@ -17,11 +17,11 @@ public class Commands_Classic extends ListenerAdapter {
     @Override
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
         String command = event.getName();
-        event.deferReply().queue();
-
-        String response = "'" + command + "' is not a valid command."; // Default
+        String response = "";
 
         switch (command) {
+            case "about": response = textResource.get("about"); break;
+
             case "jab": response = textResource.get("jab"); break;
             case "ftilt": response = textResource.get("ftilt"); break;
             case "dtilt": response = textResource.get("dtilt"); break;
@@ -58,6 +58,9 @@ public class Commands_Classic extends ListenerAdapter {
             case "ledgeroll": response = textResource.get("ledgeroll"); break;
         }
 
-        event.getHook().sendMessage(response).queue();
+        if(!response.isEmpty()) { // Avoids queue entirely if handled by another Listener
+            event.deferReply().queue();
+            event.getHook().sendMessage(response).queue();
+        }
     }
 }

@@ -6,6 +6,10 @@
     Most straightforward commands. Ported in order from G. Kings' bot. Eventually these should be original assets.
 ,,,
 
+~~~about~~~
+**Classic Commands** are almost identical to the original Gerudo Kings' bot and is intended to duplicate its entire functionality. There are minor formatting adjustments and a few additions (such as vanilla ledge options) but this is essentially the same as it's always been, just with slash commands instead of !this kind of thing.
+,,,
+
 ~~~jab~~~
 Total: 21
 Hit: 3-5
@@ -399,6 +403,66 @@ https://imgur.com/1sUILkH
 ~~~MISCELLANEOUS COMMANDS NOTES~~~
     Commands begin with 'misc-' except lists, catch all for utility and other functions.
 ,,,
+
+~~~list~~~
+Each command category has its own list (and about page):
+
+/list-classic
+/list-advanced
+/list-matchup
+/list-abstract
+,,,,
+
+~~~list-classic~~~
+/about
+
+/jab
+/ftilt
+/dtilt
+/utilt
+/dashattack
+
+/nair
+/fair
+/bair
+/uair
+/dair
+
+/neutralb
+/sideb
+/upb
+/downb
+
+/info
+
+/fsmash
+/dsmash
+/upsmash
+
+/grab
+/dashgrab
+/roll
+/spotdodge
+/airdodge
+
+/floorattack
+/ledgestand
+/ledgeattack
+/ledgejump
+/ledgeroll
+,,,,
+
+~~~list-advanced~~~
+X
+,,,,
+
+~~~list-matchup~~~
+X
+,,,,
+
+~~~list-abstract~~~
+X
+,,,,
 
 ~~~FINAL NOTES~~~
     None as of now.

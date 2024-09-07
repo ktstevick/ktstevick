@@ -18,38 +18,50 @@ public class Commands_Misc extends ListenerAdapter {
     @Override
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
         String command = event.getName();
+        String response = "";
+
         event.deferReply().queue();
 
-        // LIST AND DISAMBIGUATION METHODS, no prefix
+        // LISTS
+        if(command.substring(0, 4).contains("list")) {
+            switch (command) {
+                case "list": response = textResource.get("list"); break;
+                case "list-classic": response = textResource.get("list-classic"); break;
+            }
+
+            event.getHook().sendMessage(response).queue();
+        }
 
         // INITIAL DEBUG
-        switch (command) {
-            case "misc-ping":
-                event.getHook().sendMessage("pong!").queue(); // .setEphemeral(true) sets visibility to user only
-                break;
+        if(command.substring(0, 4).contains("misc")) {
+            switch (command) {
+                case "misc-ping":
+                    event.getHook().sendMessage("pong!").queue(); // .setEphemeral(true) sets visibility to user only
+                    break;
 
-            case "misc-food":
-                OptionMapping option = event.getOption("name");
-                if (option == null) {
-                    event.getHook().sendMessage("No food name provided.");
-                    return;
-                }
+                case "misc-food":
+                    OptionMapping option = event.getOption("name");
+                    if (option == null) {
+                        event.getHook().sendMessage("No food name provided.");
+                        return;
+                    }
 
-                String favoriteFood = option.getAsString();
-                event.getHook().sendMessage("Your favorite food is - " + favoriteFood).queue();
-                break;
+                    String favoriteFood = option.getAsString();
+                    event.getHook().sendMessage("Your favorite food is - " + favoriteFood).queue();
+                    break;
 
-            case "misc-sum":
-                OptionMapping num1 = event.getOption("num1");
-                OptionMapping num2 = event.getOption("num2");
-                if (num1 == null || num2 == null) {
-                    event.reply("No numbers??").queue();
-                    return;
-                }
+                case "misc-sum":
+                    OptionMapping num1 = event.getOption("num1");
+                    OptionMapping num2 = event.getOption("num2");
+                    if (num1 == null || num2 == null) {
+                        event.reply("No numbers??").queue();
+                        return;
+                    }
 
-                int sum = num1.getAsInt() + num2.getAsInt();
-                event.getHook().sendMessage("The sum is: " + sum).queue();
-                break;
+                    int sum = num1.getAsInt() + num2.getAsInt();
+                    event.getHook().sendMessage("The sum is: " + sum).queue();
+                    break;
+            }
         }
     }
 }
