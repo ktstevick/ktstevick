@@ -8,9 +8,10 @@ import java.io.IOException;
 public class UI {
     private final GamePanel gp;
     private Graphics2D g2;
-    private BufferedImage creditScreen;
+    private final BufferedImage creditScreen;
     private final Font arial_TILE, arial_80B;
-    private String currentDialogue = "";
+    private String[] currentDialogue;
+    private int dialogueIndex = 0;
 
     public UI(GamePanel gp) {
         this.gp = gp;
@@ -67,9 +68,15 @@ public class UI {
         x += gp.getTileSize() / 2;
         y += gp.getTileSize() + (gp.getTileSize() / 2);
 
-        for(String line : currentDialogue.split("\n")) {
-            g2.drawString(line, x, y);
-            y += gp.getTileSize() * 1.5;
+        if(currentDialogue[dialogueIndex] != null) {
+            for(String line : currentDialogue[dialogueIndex].split("\n")) {
+                g2.drawString(line, x, y);
+                y += (int) (gp.getTileSize() * 1.5);
+            }
+
+        } else { // Return from Dialogue State
+            dialogueIndex = 0;
+            gp.setGameState(gp.getPlayState());
         }
     }
 
@@ -100,7 +107,17 @@ public class UI {
         return (gp.getScreenWidth() - length) / 2;
     }
 
-    public void setCurrentDialogue(String currentDialogue) {
+    public String[] getCurrentDialogue() {
+        return currentDialogue;
+    }
+    public void setCurrentDialogue(String[] currentDialogue) {
         this.currentDialogue = currentDialogue;
     }
+    public int getDialogueIndex() {
+        return dialogueIndex;
+    }
+    public void setDialogueIndex(int dialogueIndex) {
+        this.dialogueIndex = dialogueIndex;
+    }
+
 }

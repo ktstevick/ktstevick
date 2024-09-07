@@ -2,6 +2,7 @@ package org.example;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.security.Key;
 
 public class KeyHandler implements KeyListener {
     GamePanel gp;
@@ -55,25 +56,8 @@ public class KeyHandler implements KeyListener {
             }
 
         } else if(gp.getGameState() == gp.getDialogueState()) {
-            if(gp.getPlayer().getDirection().equals("up")) {
-                if(downPressed || leftPressed || rightPressed) {
-                    gp.setGameState(gp.getPlayState());
-                }
-            }
-            if(gp.getPlayer().getDirection().equals("down")) {
-                if(upPressed || leftPressed || rightPressed) {
-                    gp.setGameState(gp.getPlayState());
-                }
-            }
-            if(gp.getPlayer().getDirection().equals("left")) {
-                if(upPressed || downPressed || rightPressed) {
-                    gp.setGameState(gp.getPlayState());
-                }
-            }
-            if(gp.getPlayer().getDirection().equals("right")) {
-                if(upPressed || downPressed || leftPressed) {
-                    gp.setGameState(gp.getPlayState());
-                }
+            if(code == KeyEvent.VK_ENTER) {
+                gp.getPanelUI().setDialogueIndex(gp.getPanelUI().getDialogueIndex() + 1); // Next message
             }
         }
 
