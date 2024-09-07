@@ -37,17 +37,15 @@ public class NPC_Granny extends Entity {
         dialogues[2] = "Have fun exploring, but be \nsafe.";
         dialogues[3] = "My dialogue loop is about to \nreset. It was nice chatting!";
 
-//        setDialogueLoopLength(4);
-
         // Found items
-//        dialogues[4] = "You know what they say about \nan apple a day!";
-//        dialogues[5] = "Why does banana candy suck \nso much anyways?";
-//        dialogues[6] = "The developer borrowed that \ncherry sprite from Pac-Man.";
-//
-//        // Item combinations
-//        dialogues[7] = "Only the Apple left. Head \nNorth!";
-//        dialogues[8] = "Only the Banana left. Head \nWest!";
-//        dialogues[9] = "Only the Cherry left. Head \nEast!";
+        dialogues[4] = "You know what they say about \nan apple a day!";
+        dialogues[5] = "Why does banana candy suck \nso much anyways?";
+        dialogues[6] = "The developer borrowed that \ncherry sprite from Pac-Man.";
+
+        // Item combinations
+        dialogues[7] = "Only the Apple left. Head \nNorth!";
+        dialogues[8] = "Only the Banana left. Head \nWest!";
+        dialogues[9] = "Only the Cherry left. Head \nEast!";
 
         setDialogues(dialogues);
     }
@@ -77,40 +75,50 @@ public class NPC_Granny extends Entity {
     }
 
     public void speak() {
+        // DEFAULT
+        gp.getPanelUI().setCurrentDialogue(generateUIDialogue(0, 3));
+
+        // CONDITIONAL DIALOGUE
+        if(gp.getPlayer().isHasApple() && !mentionedApple) {
+            if(gp.getPlayer().isHasBanana()) {
+                gp.getPanelUI().setCurrentDialogue(generateUIDialogue(9));
+
+            } else if(gp.getPlayer().isHasCherry()) {
+                gp.getPanelUI().setCurrentDialogue(generateUIDialogue(8));
+
+            } else {
+                gp.getPanelUI().setCurrentDialogue(generateUIDialogue(4));
+            }
+
+            mentionedApple = true;
+
+        } else if(gp.getPlayer().isHasBanana() && !mentionedBanana) {
+            if(gp.getPlayer().isHasApple()) {
+                gp.getPanelUI().setCurrentDialogue(generateUIDialogue(9));
+
+            } else if(gp.getPlayer().isHasCherry()) {
+                gp.getPanelUI().setCurrentDialogue(generateUIDialogue(7));
+
+            } else {
+                gp.getPanelUI().setCurrentDialogue(generateUIDialogue(5));
+            }
+
+            mentionedBanana = true;
+
+        } else if(gp.getPlayer().isHasCherry() && !mentionedCherry) {
+            if(gp.getPlayer().isHasApple()) {
+                gp.getPanelUI().setCurrentDialogue(generateUIDialogue(8));
+            } else if(gp.getPlayer().isHasBanana()) {
+                gp.getPanelUI().setCurrentDialogue(generateUIDialogue(7));
+            } else { gp.getPanelUI().setCurrentDialogue(generateUIDialogue(6));
+            }
+
+            mentionedCherry = true;
+        }
 
         // GAME END CHECK
 //        if(gp.getPlayer().isHasApple() && gp.getPlayer().isHasBanana() && gp.getPlayer().isHasCherry()) {
 //            gp.setGameState(gp.getCreditsState());
-//        }
-
-        // CONDITIONAL DIALOGUE
-//        if(gp.getPlayer().isHasApple() && !mentionedApple) {
-//            if(gp.getPlayer().isHasBanana()) { setDialogueIndex(9); }
-//            else if(gp.getPlayer().isHasCherry()) { setDialogueIndex(8); }
-//            else { setDialogueIndex(4); }
-//            mentionedApple = true;
-//
-//        } else if(gp.getPlayer().isHasBanana() && !mentionedBanana) {
-//            if(gp.getPlayer().isHasApple()) { setDialogueIndex(9); }
-//            else if(gp.getPlayer().isHasCherry()) { setDialogueIndex(7); }
-//            else { setDialogueIndex(5); }
-//            mentionedBanana = true;
-//
-//        } else if(gp.getPlayer().isHasCherry() && !mentionedCherry) {
-//            if(gp.getPlayer().isHasApple()) { setDialogueIndex(8); }
-//            else if(gp.getPlayer().isHasBanana()) { setDialogueIndex(7); }
-//            else { setDialogueIndex(6); }
-//            mentionedCherry = true;
-//        }
-
-        // getDialogueIndex() defaults to 0
-        gp.getPanelUI().setCurrentDialogue(getDialogues());
-
-        // INDEX REASSIGNMENT
-//        if(getDialogueIndex() >= getDialogueLoopLength() - 1) {
-//            setDialogueIndex(0);
-//        } else {
-//            setDialogueIndex(getDialogueIndex() + 1);
 //        }
 
         // CHANGE DIRECTION TO FACE PLAYER
@@ -128,5 +136,24 @@ public class NPC_Granny extends Entity {
                 setDirection("left");
                 break;
         }
+    }
+
+    // UTILITY, can be moved to Entity when relevant
+    public String[] generateUIDialogue(int beginningIndex) {
+        String[] result = new String[1];
+        result[0] = getDialogues()[beginningIndex];
+
+        return result;
+    }
+
+    public String[] generateUIDialogue(int beginningIndex, int endingIndex) {
+        int totalMessages = (endingIndex - beginningIndex) + 1;
+        String[] result = new String[totalMessages];
+
+        for(int i = 0; i < totalMessages; i++) {
+            result[i] = getDialogues()[i + beginningIndex];
+        }
+
+        return result;
     }
 }

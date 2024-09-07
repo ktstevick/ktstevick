@@ -68,7 +68,7 @@ public class UI {
         x += gp.getTileSize() / 2;
         y += gp.getTileSize() + (gp.getTileSize() / 2);
 
-        if(currentDialogue[dialogueIndex] != null) {
+        if(dialogueIndex < currentDialogue.length) {
             for(String line : currentDialogue[dialogueIndex].split("\n")) {
                 g2.drawString(line, x, y);
                 y += (int) (gp.getTileSize() * 1.5);
