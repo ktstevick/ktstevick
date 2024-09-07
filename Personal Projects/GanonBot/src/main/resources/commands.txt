@@ -1,0 +1,405 @@
+~~~OPENING NOTES~~~
+    Placeholder text. This may become some form of README
+```
+
+~~~CLASSIC COMMANDS NOTES~~~
+    Most straightforward commands. Ported in order from G. Kings' bot. Eventually these should be original assets.
+,,,
+
+~~~jab~~~
+Total: 21
+Hit: 3-5
+IASA: 19
+
+http://i.imgur.com/o4d4K.gif
+,,,
+
+~~~ftilt~~~
+Total: 29
+Hit: 9-11
+
+http://i.imgur.com/nKPDC.gif
+http://i.imgur.com/Tylqt.gif
+http://i.imgur.com/j6hsi.gif
+,,,
+
+~~~dtilt~~~
+Total: 35
+Hit: 10-12
+IASA: 35
+
+http://i.imgur.com/qNFeL.gif
+,,,
+
+~~~utilt~~~
+Total: 114
+Hit: 81-83
+IASA: 113
+
+http://i.imgur.com/xIpDE.gif
+,,,
+
+~~~dashattack~~~
+Total: 39
+Hit: 7-16
+IASA: 38
+
+http://i.imgur.com/y1kaO.gif
+,,,
+
+~~~nair~~~
+Total: 44
+Hit: 7-8, 16-17 (v1.0) or 20-21 (later versions)
+Auto cancel: <3 22>
+Landlag: 25
+L canceled: 12
+
+http://i.imgur.com/oKmjQ.gif
+,,,
+
+~~~fair~~~
+Total: 44
+Hit: 14-19
+IASA: 35
+Auto cancel: <6 34>
+Landlag: 25
+L canceled: 12
+
+http://i.imgur.com/2FmxA.gif
+,,,
+
+~~~bair~~~
+Total: 35
+Hit: 10-15
+IASA: 29
+Auto cancel: <6 19>
+Landlag: 25
+L canceled: 12
+
+http://i.imgur.com/O8zlX.gif
+,,,
+
+~~~uair~~~
+Total: 33
+Hit: 6-16
+IASA: 30
+Auto cancel: 22>
+Landlag: 25
+L canceled: 12
+
+http://i.imgur.com/ngIHC.gif
+,,,
+
+~~~dair~~~
+Total: 44
+Hit: 16-20
+IASA: 38
+Auto cancel: <3 36>
+Landlag: 35
+L canceled: 17
+
+http://i.imgur.com/NMsFh.gif
+,,,
+
+~~~neutralb~~~
+Total: 119
+Hit: 70-72
+
+http://i.imgur.com/76keB.gif
+,,,
+
+~~~sideb~~~
+Total: 79
+Hit Window: 15-34
+
+http://i.imgur.com/qEV1T.gif
+
+Gerudo Dragon Hit
+Total: 25
+Hit: 4-8
+Upon striking from the air…
+Landlag: 40
+Landfallspeciallag: 40
+
+Otherwise
+Landlag: 20
+Landfallspeciallag: 20
+
+http://i.imgur.com/JkkvL.gif
+http://i.imgur.com/dgkZG.gif
+,,,
+
+~~~upb~~~
+Total: 64
+Grab: 13-33
+Direction choosing: 13
+Landlag: 30
+Landfallspeciallag: 30
+
+Grabs edges from both sides as early
+as 45
+
+If it hits…
+Hit: 3-5, 9-11, 15-17, 21-23
+Releases on frame 25
+Free falling 60 frames after release
+
+http://i.imgur.com/YhnE1.gif
+,,,
+
+~~~downb~~~
+Total: 77
+Hit: 14-34
+Total (ends in the air): 69
+If you hit a wall, 60 frame animation
+
+http://i.imgur.com/KADFf.gif
+
+Aerial Wizard's Foot
+
+Total: 58
+Hit: 15-29
+Landing hit: 2-3
+Landing animation: 57
+
+http://i.imgur.com/Ol4Ow.gif
+
+The large foot hitbox on grounded wizard foot can only hit stage hurtboxes, so it actually only hits a bit past his knee leaving his foot/shin exposed like the aerial version. It's the reason Kirby can duck underneath it without getting hit even though that hitbox clearly goes right through him.
+,,,
+
+~~~info~~~
+Jumpstart: 6
+Airborne on frame 7
+
+Air time: 42
+Earliest FF: 22
+FF air time: 32
+
+SH air time: 33
+Earliest FF: 18
+SH FF air time: 24
+
+2nd jump earliest FF: 20
+
+Landlag: 5
+
+Dash becomes run at frame 16
+Turn-jump Threshold: 16
+Run turnaround: 28
+
+Tech-Roll Forward
+Total: 40
+Horizontal Movement At: 11
+Distance: 18.6 ft
+Invincible: 1-20
+
+Tech-Roll Backward
+Total: 40
+Horizontal Movement At: 8
+Distance: 15.2 ft
+Invincible: 1-20
+
+Getup-Attack (Back)
+Total: 49
+Hit: 19-20 (Both Sides), 28-29 (Both Sides)
+Invincible: 1-29
+
+Getup-Attack (Stomach)
+Total: 49
+Hit: 20-21 (Behind), 26-27 (Front)
+Invincible: 1-27
+
+Getup-Roll Forward (Back)
+Total: 35
+Horizontal Movement At: 5
+Distance: 12.4 ft
+Invincible: 1-23
+
+Getup-Roll Forward (Stomach)
+Total: 35
+Horizontal Movement At: 10
+Distance: 12.4 ft
+Invincible: 1-19
+
+Getup-Roll Backward (Back)
+Total: 35
+Horizontal Movement At: 5
+Distance: 12.2 ft
+Invincible: 1-19
+
+Getup-Roll Backward (Stomach)
+Total: 35
+Horizontal Movement At: 15
+Distance: 12.4 ft
+Invincible: 1-25
+,,,
+
+~~~fsmash~~~
+Total: 66
+Charge frame: 10
+Hit: 20-24
+IASA: 60
+
+http://i.imgur.com/QBOHE.gif
+http://i.imgur.com/sVHSY.gif
+http://i.imgur.com/Hwgsa.gif
+,,,
+
+~~~dsmash~~~
+Total: 49
+Charge frame: 14
+Hit: 19-22, 29-32
+IASA: 47
+
+http://i.imgur.com/cHmIB.gif
+,,,
+
+~~~upsmash~~~
+Total: 54
+Charge frame: 8
+Hit: 21-23, 26-29
+IASA: 40
+
+http://i.imgur.com/j6gXM.gif
+,,,
+
+~~~grab~~~
+Total: 30
+Hit: 7-8
+
+https://i.imgur.com/MAwPTAA.gif
+,,,
+
+~~~dashgrab~~~
+Total: 40
+Hit: 11-12
+
+https://i.imgur.com/173Z9MD.gif
+,,,
+
+~~~roll~~~
+Invulnerable 4-19 out of 31
+
+https://i.imgur.com/zSGZHoq.gif
+https://i.imgur.com/maVZIef.gif
+,,,
+
+~~~spotdodge~~~
+Invulnerable 2-20 out of 32
+
+https://i.imgur.com/vfOo8BP.gif
+,,,
+
+~~~airdodge~~~
+Invulnerable 4-29 out of 49
+
+https://i.imgur.com/05kcUW9.gif
+,,,
+
+~~~floorattack~~~
+Floor Attack (Back)
+Total: 49
+Hit: 19-20 (Both Sides), 28-29 (Both Sides)
+Invincible: 1-29
+
+https://imgur.com/r1usFKG
+
+Floor Attack (Stomach)
+Total: 49
+Hit: 20-21 (Behind), 26-27 (Front)
+Invincible: 1-27
+
+https://imgur.com/u7CCUu6
+,,,
+
+~~~ledgestand~~~
+Total: 33
+Intangibility: 1-22
+Occupancy: 1-33
+
+https://imgur.com/gb4ICEH
+
+Ledge Stand, >100%
+
+Total: 58
+Intangibility: 1-49
+Occupancy: 1-44
+
+https://imgur.com/BvbS9RW
+,,,
+
+~~~ledgeattack~~~
+Total: 54
+Hit: 24-29
+Intangibility: 1-20
+Occupancy: 1-42
+Damage: 10
+On Shield: -24
+
+https://imgur.com/hbBRxr7
+
+Ledge Attack >100%
+
+Total: 69
+Hit: 37-40
+Intangibility: 1-33
+Occupancy: 1-50
+Damage: 8
+On Shield: -26
+
+https://imgur.com/dXcfpi4
+,,,
+
+~~~ledgejump~~~
+Total: 43
+Intangibility: 1-11
+Occupancy: 1-11
+
+https://imgur.com/87Kimas
+
+Ledge Jump, >100%
+
+Total: 53
+Intangibility: 1-18
+Occupancy: 1-18
+
+https://imgur.com/fdPLeSW
+
+Ganon's drift can be influenced slightly during the jump itself, but can't be acted out of until the animation ends
+,,,
+
+~~~ledgeroll~~~
+Total: 48
+Intangibility: 1-24
+Occupancy: 1-40
+
+https://imgur.com/1sUILkH
+
+Ledge Roll, >100%
+
+Total: 78
+Intangibility: 1-54
+Occupancy: 1-54
+
+https://imgur.com/1sUILkH
+,,,
+
+~~~ADVANCED COMMANDS NOTES~~~
+    Commands begin with 'adv-', more conceptual responses.
+,,,
+
+~~~MATCH UP COMMANDS NOTES~~~
+    Commands begin with 'vs-', match up specific data and strategies.
+,,,
+
+~~~ABSTRACT COMMANDS NOTES~~~
+    Commands begin with 'abs-', conceptual and abstract ideas discussed here.
+,,,
+
+~~~MISCELLANEOUS COMMANDS NOTES~~~
+    Commands begin with 'misc-' except lists, catch all for utility and other functions.
+,,,
+
+~~~FINAL NOTES~~~
+    None as of now.
+,,,
