@@ -2,12 +2,14 @@ package org.example.entity;
 
 import org.example.GamePanel;
 
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
 public class NPC_Granny extends Entity {
     private boolean mentionedApple = false;
     private boolean mentionedBanana = false;
     private boolean mentionedCherry = false;
+
     public NPC_Granny(GamePanel gp) {
         super(gp);
 
@@ -19,6 +21,9 @@ public class NPC_Granny extends Entity {
     }
 
     public void getImage() {
+        setPortrait1(setup("/npc/granny_portrait_1"));
+        setPortrait2(setup("/npc/granny_portrait_2"));
+
         setUp1(setup("/npc/granny_up_1"));
         setUp2(setup("/npc/granny_up_2"));
         setDown1(setup("/npc/granny_down_1"));
@@ -31,23 +36,39 @@ public class NPC_Granny extends Entity {
 
     public void setDialogue() {
         String dialogues[] = new String[10];
+        BufferedImage portraits[] = new BufferedImage[10];
 
         dialogues[0] = "Hello! So, you've arrived on \nthis island at last.";
+        portraits[0] = getPortrait1();
         dialogues[1] = "When you have all three fruits, \ncome back.";
+        portraits[1] = getPortrait1();
         dialogues[2] = "Have fun exploring, but be \nsafe.";
+        portraits[2] = null;
         dialogues[3] = "My dialogue loop is about to \nreset. It was nice chatting!";
+        portraits[3] = getPortrait2();
 
         // Found items
         dialogues[4] = "You know what they say about \nan apple a day!";
+        portraits[4] = null;
+
         dialogues[5] = "Why does banana candy suck \nso much anyways?";
+        portraits[5] = getPortrait1();
+
         dialogues[6] = "The developer borrowed that \ncherry sprite from Pac-Man.";
+        portraits[6] = getPortrait1();
 
         // Item combinations
         dialogues[7] = "Only the Apple left. Head \nNorth!";
+        portraits[7] = getPortrait2();
+
         dialogues[8] = "Only the Banana left. Head \nWest!";
+        portraits[8] = getPortrait2();
+
         dialogues[9] = "Only the Cherry left. Head \nEast!";
+        portraits[9] = getPortrait2();
 
         setDialogues(dialogues);
+        setPortraits(portraits);
     }
 
     public void setAction() {
@@ -76,50 +97,56 @@ public class NPC_Granny extends Entity {
 
     public void speak() {
         // DEFAULT
-        gp.getPanelUI().setCurrentDialogue(generateUIDialogue(0, 3));
+        gp.getDialogueH().setCurrentDialogue(generateHandlerDialogue(0, 3));
+        gp.getDialogueH().setCurrentPortraits(generateHandlerPortraits(0, 3));
 
         // CONDITIONAL DIALOGUE
         if(gp.getPlayer().isHasApple() && !mentionedApple) {
             if(gp.getPlayer().isHasBanana()) {
-                gp.getPanelUI().setCurrentDialogue(generateUIDialogue(9));
+                gp.getDialogueH().setCurrentDialogue(generateHandlerDialogue(9));
+                gp.getDialogueH().setCurrentPortraits(generateHandlerPortraits(9));
 
             } else if(gp.getPlayer().isHasCherry()) {
-                gp.getPanelUI().setCurrentDialogue(generateUIDialogue(8));
+                gp.getDialogueH().setCurrentDialogue(generateHandlerDialogue(8));
+                gp.getDialogueH().setCurrentPortraits(generateHandlerPortraits(8));
 
             } else {
-                gp.getPanelUI().setCurrentDialogue(generateUIDialogue(4));
+                gp.getDialogueH().setCurrentDialogue(generateHandlerDialogue(4));
+                gp.getDialogueH().setCurrentPortraits(generateHandlerPortraits(4));
             }
 
             mentionedApple = true;
 
         } else if(gp.getPlayer().isHasBanana() && !mentionedBanana) {
             if(gp.getPlayer().isHasApple()) {
-                gp.getPanelUI().setCurrentDialogue(generateUIDialogue(9));
+                gp.getDialogueH().setCurrentDialogue(generateHandlerDialogue(9));
+                gp.getDialogueH().setCurrentPortraits(generateHandlerPortraits(9));
 
             } else if(gp.getPlayer().isHasCherry()) {
-                gp.getPanelUI().setCurrentDialogue(generateUIDialogue(7));
+                gp.getDialogueH().setCurrentDialogue(generateHandlerDialogue(7));
+                gp.getDialogueH().setCurrentPortraits(generateHandlerPortraits(7));
 
             } else {
-                gp.getPanelUI().setCurrentDialogue(generateUIDialogue(5));
+                gp.getDialogueH().setCurrentDialogue(generateHandlerDialogue(5));
+                gp.getDialogueH().setCurrentPortraits(generateHandlerPortraits(5));
             }
 
             mentionedBanana = true;
 
         } else if(gp.getPlayer().isHasCherry() && !mentionedCherry) {
             if(gp.getPlayer().isHasApple()) {
-                gp.getPanelUI().setCurrentDialogue(generateUIDialogue(8));
+                gp.getDialogueH().setCurrentDialogue(generateHandlerDialogue(8));
+                gp.getDialogueH().setCurrentPortraits(generateHandlerPortraits(8));
             } else if(gp.getPlayer().isHasBanana()) {
-                gp.getPanelUI().setCurrentDialogue(generateUIDialogue(7));
-            } else { gp.getPanelUI().setCurrentDialogue(generateUIDialogue(6));
+                gp.getDialogueH().setCurrentDialogue(generateHandlerDialogue(7));
+                gp.getDialogueH().setCurrentPortraits(generateHandlerPortraits(7));
+            } else {
+                gp.getDialogueH().setCurrentDialogue(generateHandlerDialogue(6));
+                gp.getDialogueH().setCurrentPortraits(generateHandlerPortraits(6));
             }
 
             mentionedCherry = true;
         }
-
-        // GAME END CHECK
-//        if(gp.getPlayer().isHasApple() && gp.getPlayer().isHasBanana() && gp.getPlayer().isHasCherry()) {
-//            gp.setGameState(gp.getCreditsState());
-//        }
 
         // CHANGE DIRECTION TO FACE PLAYER
         switch(gp.getPlayer().getDirection()) {
@@ -139,19 +166,35 @@ public class NPC_Granny extends Entity {
     }
 
     // UTILITY, can be moved to Entity when relevant
-    public String[] generateUIDialogue(int beginningIndex) {
+    public String[] generateHandlerDialogue(int beginningIndex) {
         String[] result = new String[1];
         result[0] = getDialogues()[beginningIndex];
 
         return result;
     }
-
-    public String[] generateUIDialogue(int beginningIndex, int endingIndex) {
+    public String[] generateHandlerDialogue(int beginningIndex, int endingIndex) {
         int totalMessages = (endingIndex - beginningIndex) + 1;
         String[] result = new String[totalMessages];
 
         for(int i = 0; i < totalMessages; i++) {
             result[i] = getDialogues()[i + beginningIndex];
+        }
+
+        return result;
+    }
+
+    public BufferedImage[] generateHandlerPortraits(int beginningIndex) {
+        BufferedImage[] result = new BufferedImage[1];
+        result[0] = getPortraits()[beginningIndex];
+
+        return result;
+    }
+    public BufferedImage[] generateHandlerPortraits(int beginningIndex, int endingIndex) {
+        int totalPortraits = (endingIndex - beginningIndex) + 1;
+        BufferedImage[] result = new BufferedImage[totalPortraits];
+
+        for(int i = 0; i < totalPortraits; i++) {
+            result[i] = getPortraits()[i + beginningIndex];
         }
 
         return result;

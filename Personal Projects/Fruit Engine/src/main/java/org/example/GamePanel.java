@@ -28,6 +28,7 @@ public class GamePanel extends JPanel implements Runnable {
     // SYSTEM
     private final TileManager tileM = new TileManager(this);
     private final KeyHandler keyH = new KeyHandler(this);
+    private final DialogueHandler dialogueH = new DialogueHandler(this);
     private Thread gameThread;
     private final CollisionChecker cChecker = new CollisionChecker(this);
     private final AssetSetter aSetter = new AssetSetter(this);
@@ -98,7 +99,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void update() {
         if(gameState == PLAY_STATE) {
             player.update();
-            for(int i = 0; i <npc.length; i++) {
+            for(int i = 0; i < npc.length; i++) {
                 if(npc[i] != null) {
                     npc[i].update();
                 }
@@ -213,6 +214,9 @@ public class GamePanel extends JPanel implements Runnable {
     }
     public KeyHandler getKeyH() {
         return keyH;
+    }
+    public DialogueHandler getDialogueH() {
+        return dialogueH;
     }
     public void setNpc(Entity[] npc) {
         this.npc = npc;

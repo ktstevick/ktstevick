@@ -9,9 +9,10 @@ public class UI {
     private final GamePanel gp;
     private Graphics2D g2;
     private final BufferedImage creditScreen;
-    private final Font arial_TILE, arial_80B;
-    private String[] currentDialogue;
-    private int dialogueIndex = 0;
+    private final Font arial_TILE;
+    private final Font arial_80B;
+//    private String[] currentDialogue;
+//    private int dialogueIndex = 0;
 
     public UI(GamePanel gp) {
         this.gp = gp;
@@ -23,6 +24,7 @@ public class UI {
         BufferedImage image = null;
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/screens/credits_0.png"));
+
         } catch (IOException e) {
             System.out.println("Something happened! Error Code: 008");
         }
@@ -57,27 +59,7 @@ public class UI {
     }
 
     private void drawDialogueScreen() {
-        int x = 0;
-        int y = gp.getTileSize() * 8;
-        int width = gp.getScreenWidth();
-        int height = gp.getTileSize() * 4;
-
-        drawSubWindow(x, y, width, height);
-
-        g2.setFont(arial_TILE);
-        x += gp.getTileSize() / 2;
-        y += gp.getTileSize() + (gp.getTileSize() / 2);
-
-        if(dialogueIndex < currentDialogue.length) {
-            for(String line : currentDialogue[dialogueIndex].split("\n")) {
-                g2.drawString(line, x, y);
-                y += (int) (gp.getTileSize() * 1.5);
-            }
-
-        } else { // Return from Dialogue State
-            dialogueIndex = 0;
-            gp.setGameState(gp.getPlayState());
-        }
+        gp.getDialogueH().drawDialogue(g2);
     }
 
     private void drawCreditsScreen() {
@@ -90,7 +72,7 @@ public class UI {
         g2.drawString(text, x, y);
     }
 
-    public void drawSubWindow(int x, int y, int width, int height) {
+    private void drawSubWindow(int x, int y, int width, int height) {
         Color c = new Color(255,255,255, 200);
 
         g2.setColor(c);
@@ -107,17 +89,23 @@ public class UI {
         return (gp.getScreenWidth() - length) / 2;
     }
 
-    public String[] getCurrentDialogue() {
-        return currentDialogue;
-    }
-    public void setCurrentDialogue(String[] currentDialogue) {
-        this.currentDialogue = currentDialogue;
-    }
-    public int getDialogueIndex() {
-        return dialogueIndex;
-    }
-    public void setDialogueIndex(int dialogueIndex) {
-        this.dialogueIndex = dialogueIndex;
-    }
+//    public String[] getCurrentDialogue() {
+//        return currentDialogue;
+//    }
+//    public void setCurrentDialogue(String[] currentDialogue) {
+//        this.currentDialogue = currentDialogue;
+//    }
+//    public int getDialogueIndex() {
+//        return dialogueIndex;
+//    }
+//    public void setDialogueIndex(int dialogueIndex) {
+//        this.dialogueIndex = dialogueIndex;
+//    }
 
+    public Font getArial_TILE() {
+        return arial_TILE;
+    }
+//    public Font getArial_80B() {
+//        return arial_80B;
+//    }
 }

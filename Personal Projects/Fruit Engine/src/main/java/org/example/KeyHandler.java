@@ -57,7 +57,7 @@ public class KeyHandler implements KeyListener {
 
         } else if(gp.getGameState() == gp.getDialogueState()) {
             if(code == KeyEvent.VK_ENTER) {
-                gp.getPanelUI().setDialogueIndex(gp.getPanelUI().getDialogueIndex() + 1); // Next message
+                gp.getDialogueH().setDialogueIndex(gp.getDialogueH().getDialogueIndex() + 1); // Next message
             }
         }
 

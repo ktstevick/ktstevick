@@ -21,6 +21,9 @@ public class Entity {
     private int solidAreaDefaultY;
     private boolean collisionOn = false;
 
+    private BufferedImage portrait1;
+    private BufferedImage portrait2;
+
     private BufferedImage up1;
     private BufferedImage up2;
     private BufferedImage down1;
@@ -38,8 +41,7 @@ public class Entity {
     private int actionLockCounter = 0;
 
     private String dialogues[] = new String[20];
-    private int dialogueLoopLength = 0;
-    private int dialogueIndex = 0;
+    private BufferedImage portraits[] = new BufferedImage[20];
 
     public Entity(GamePanel gp) {
         this.gp = gp;
@@ -217,6 +219,18 @@ public class Entity {
         this.actionLockCounter = actionLockCounter;
     }
 
+    public BufferedImage getPortrait1() {
+        return portrait1;
+    }
+    public void setPortrait1(BufferedImage portrait1) {
+        this.portrait1 = portrait1;
+    }
+    public BufferedImage getPortrait2() {
+        return portrait2;
+    }
+    public void setPortrait2(BufferedImage portrait2) {
+        this.portrait2 = portrait2;
+    }
     public BufferedImage getUp1() {
         return up1;
     }
@@ -299,16 +313,10 @@ public class Entity {
     public void setDialogues(String[] dialogues) {
         this.dialogues = dialogues;
     }
-    public int getDialogueIndex() {
-        return dialogueIndex;
+    public BufferedImage[] getPortraits() {
+        return portraits;
     }
-    public void setDialogueIndex(int dialogueIndex) {
-        this.dialogueIndex = dialogueIndex;
-    }
-    public int getDialogueLoopLength() {
-        return dialogueLoopLength;
-    }
-    public void setDialogueLoopLength(int dialogueLoopLength) {
-        this.dialogueLoopLength = dialogueLoopLength;
+    public void setPortraits(BufferedImage[] portraits) {
+        this.portraits = portraits;
     }
 }
