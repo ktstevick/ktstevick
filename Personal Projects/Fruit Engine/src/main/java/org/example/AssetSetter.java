@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.entity.NPC_Boy;
 import org.example.entity.NPC_Granny;
 import org.example.object.*;
 
@@ -28,5 +29,9 @@ public class AssetSetter {
         gp.getNpc()[0] = new NPC_Granny(gp);
         gp.getNpc()[0].setWorldX(gp.getTileSize() * 22);
         gp.getNpc()[0].setWorldY(gp.getTileSize() * 22);
+
+        gp.getNpc()[1] = new NPC_Boy(gp);
+        gp.getNpc()[1].setWorldX(gp.getTileSize() * 35);
+        gp.getNpc()[1].setWorldY(gp.getTileSize() * 35);
     }
 }

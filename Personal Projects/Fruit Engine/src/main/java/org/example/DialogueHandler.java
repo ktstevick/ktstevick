@@ -6,10 +6,13 @@ import java.awt.image.BufferedImage;
 public class DialogueHandler {
     private final GamePanel gp;
     private Graphics2D g2;
-
-    private String[] currentDialogue;
-    private BufferedImage[] currentPortraits;
+    private Dialogue currentD;
     private int dialogueIndex = 0;
+
+    private int FULL_FADE_MAX = 250;
+    private int PART_FADE_MAX = 180;
+    private int fadeCounter = 0;
+    private boolean inFullTransition = true;
 
     public DialogueHandler(GamePanel gp) {
         this.gp = gp;
@@ -18,35 +21,66 @@ public class DialogueHandler {
     public void drawDialogue(Graphics2D g2) {
         this.g2 = g2;
 
+        // Text window
         int x = 0;
         int y = gp.getTileSize() * 8;
         int width = gp.getScreenWidth();
         int height = gp.getTileSize() * 4;
 
-        // Skips background draw if no corresponding portrait
-        if(dialogueIndex < currentDialogue.length && currentPortraits[dialogueIndex] != null) {
-            drawBackground();
-        }
-        drawPortrait(gp.getTileSize(), (gp.getTileSize() * 3));
-        drawTextWindow(x, y, width, height);
+        // Third character to check all three types on the same load
 
-        g2.setFont(gp.getPanelUI().getArial_TILE());
-        x += gp.getTileSize() / 2;
-        y += gp.getTileSize() + (gp.getTileSize() / 2);
+        // Background
+        if(dialogueIndex < currentD.getMessages().length && currentD.getPortraitsLeft()[dialogueIndex] != null) {
+            // Background check
+            if(currentD.getBackground() == null) {
+                if(fadeCounter < PART_FADE_MAX) {
+                    fadeCounter += (PART_FADE_MAX / 30); // Arbitrary interval
+                }
 
-        if(dialogueIndex < currentDialogue.length) {
-            for(String line : currentDialogue[dialogueIndex].split("\n")) {
-                g2.drawString(line, x, y);
-                y += (int) (gp.getTileSize() * 1.5);
+                drawBackground(fadeCounter);
+                inFullTransition = false;
+
+            } else {
+                if(fadeCounter < FULL_FADE_MAX && inFullTransition) {
+                    fadeCounter += (FULL_FADE_MAX / 50);
+                    drawBackground(fadeCounter);
+
+                } else if (fadeCounter == FULL_FADE_MAX) {
+                    inFullTransition = false; // !!!
+                }
+
+                if(!inFullTransition) {
+                    drawBackground(currentD.getBackground());
+                }
             }
+        } else {
+            inFullTransition = false;
+        }
 
-        } else { // Return from Dialogue State
+        // Regular draw
+        if(!inFullTransition) {
+            drawPortrait(gp.getTileSize(), (gp.getTileSize() * 3));
+            drawTextWindow(x, y, width, height);
+            drawText(x, y);
+
+            if(fadeCounter > 0) { // !!!
+                System.out.println(fadeCounter);
+                fadeCounter -= (FULL_FADE_MAX / 50);
+                drawBackground(fadeCounter);
+            }
+        }
+
+        // Exit Dialogue State
+        if(dialogueIndex >= currentD.getMessages().length) {
             dialogueIndex = 0;
+            fadeCounter = 0;
+            inFullTransition = true;
+
             gp.setGameState(gp.getPlayState());
         }
     }
 
-    public void drawTextWindow(int x, int y, int width, int height) {
+    private void drawTextWindow(int x, int y, int width, int height) {
         Color c = new Color(255,255,255, 200);
 
         g2.setColor(c);
@@ -58,40 +92,47 @@ public class DialogueHandler {
         g2.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 25, 25);
     }
 
-    public void drawPortrait(int x, int y) {
+    private void drawPortrait(int x, int y) {
         int HEIGHT = gp.getTileSize() * 5;
         int WIDTH = gp.getTileSize() * 5;
 
-        if(dialogueIndex < currentDialogue.length) {
-            g2.drawImage(currentPortraits[dialogueIndex], x, y, WIDTH, HEIGHT, null);
+        if(dialogueIndex < currentD.getMessages().length) {
+            g2.drawImage(currentD.getPortraitsLeft()[dialogueIndex], x, y, WIDTH, HEIGHT, null);
         }
     }
 
-    public void drawBackground() { // Default background
-        g2.setColor(new Color(0,0,0, 127));
+    private void drawBackground(int alpha) { // Default background
+        g2.setColor(new Color(0,0,0, alpha));
         g2.fillRect(0, 0, gp.getScreenWidth(), gp.getScreenHeight());
     }
-    public void drawBackground(BufferedImage bgImage) { // Specific image
+    private void drawBackground(BufferedImage bgImage) { // Specific image
         g2.drawImage(bgImage, 0, 0, gp.getScreenWidth(), gp.getScreenHeight(), null);
     }
 
-    public String[] getCurrentDialogue() {
-        return currentDialogue;
+    private void drawText(int winX, int winY) {
+        int x = winX + gp.getTileSize() / 2;
+        int y = winY + gp.getTileSize() + (gp.getTileSize() / 2);
+
+        g2.setFont(gp.getPanelUI().getArial_TILE());
+
+        if(dialogueIndex < currentD.getMessages().length) {
+            for (String line : currentD.getMessages()[dialogueIndex].split("\n")) {
+                g2.drawString(line, x, y);
+                y += (int) (gp.getTileSize() * 1.5);
+            }
+        }
     }
-    public void setCurrentDialogue(String[] currentDialogue) {
-        this.currentDialogue = currentDialogue;
-    }
-    public BufferedImage[] getCurrentPortraits() {
-        return currentPortraits;
-    }
-    public void setCurrentPortraits(BufferedImage[] currentPortraits) {
-        this.currentPortraits = currentPortraits;
-    }
+
     public int getDialogueIndex() {
         return dialogueIndex;
     }
     public void setDialogueIndex(int dialogueIndex) {
         this.dialogueIndex = dialogueIndex;
     }
-
+    public Dialogue getCurrentD() {
+        return currentD;
+    }
+    public void setCurrentD(Dialogue currentD) {
+        this.currentD = currentD;
+    }
 }

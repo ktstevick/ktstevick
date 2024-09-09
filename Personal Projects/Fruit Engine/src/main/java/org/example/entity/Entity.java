@@ -1,5 +1,6 @@
 package org.example.entity;
 
+import org.example.Dialogue;
 import org.example.GamePanel;
 import org.example.UtilityTool;
 
@@ -7,6 +8,8 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.Array;
+import java.util.ArrayList;
 
 public class Entity {
     GamePanel gp;
@@ -39,7 +42,7 @@ public class Entity {
     private int spriteCounter = 0;
     private int spriteNum = 1;
     private int actionLockCounter = 0;
-
+    private ArrayList<Dialogue> objDialogue = new ArrayList<Dialogue>();
     private String dialogues[] = new String[20];
     private BufferedImage portraits[] = new BufferedImage[20];
 
@@ -163,6 +166,57 @@ public class Entity {
 
     public void setAction() { }
     public void speak() { }
+
+    public void turnToPlayer() {
+        switch(gp.getPlayer().getDirection()) {
+            case "up":
+                setDirection("down");
+                break;
+            case "down":
+                setDirection("up");
+                break;
+            case "left":
+                setDirection("right");
+                break;
+            case "right":
+                setDirection("left");
+                break;
+        }
+    }
+
+    public String[] generateHandlerDialogue(int beginningIndex) {
+        String[] result = new String[1];
+        result[0] = getDialogues()[beginningIndex];
+
+        return result;
+    }
+    public String[] generateHandlerDialogue(int beginningIndex, int endingIndex) {
+        int totalMessages = (endingIndex - beginningIndex) + 1;
+        String[] result = new String[totalMessages];
+
+        for(int i = 0; i < totalMessages; i++) {
+            result[i] = getDialogues()[i + beginningIndex];
+        }
+
+        return result;
+    }
+
+    public BufferedImage[] generateHandlerPortraits(int beginningIndex) {
+        BufferedImage[] result = new BufferedImage[1];
+        result[0] = getPortraits()[beginningIndex];
+
+        return result;
+    }
+    public BufferedImage[] generateHandlerPortraits(int beginningIndex, int endingIndex) {
+        int totalPortraits = (endingIndex - beginningIndex) + 1;
+        BufferedImage[] result = new BufferedImage[totalPortraits];
+
+        for(int i = 0; i < totalPortraits; i++) {
+            result[i] = getPortraits()[i + beginningIndex];
+        }
+
+        return result;
+    }
 
     public int getWorldX() {
         return worldX;
@@ -318,5 +372,12 @@ public class Entity {
     }
     public void setPortraits(BufferedImage[] portraits) {
         this.portraits = portraits;
+    }
+
+    public ArrayList<Dialogue> getObjDialogue() {
+        return objDialogue;
+    }
+    public void setObjDialogue(ArrayList<Dialogue> objDialogue) {
+        this.objDialogue = objDialogue;
     }
 }

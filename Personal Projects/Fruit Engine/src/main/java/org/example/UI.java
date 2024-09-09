@@ -11,8 +11,6 @@ public class UI {
     private final BufferedImage creditScreen;
     private final Font arial_TILE;
     private final Font arial_80B;
-//    private String[] currentDialogue;
-//    private int dialogueIndex = 0;
 
     public UI(GamePanel gp) {
         this.gp = gp;
@@ -49,7 +47,7 @@ public class UI {
         }
     }
 
-    public void drawPauseScreen() {
+    private void drawPauseScreen() {
         String text = "PAUSED";
 
         int x = getXForCenteredText(text);
@@ -72,40 +70,15 @@ public class UI {
         g2.drawString(text, x, y);
     }
 
-    private void drawSubWindow(int x, int y, int width, int height) {
-        Color c = new Color(255,255,255, 200);
-
-        g2.setColor(c);
-        g2.fillRoundRect(x, y, width, height,35, 35);
-
-        c = new Color(0, 0, 0);
-        g2.setColor(c);
-        g2.setStroke(new BasicStroke(5));
-        g2.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 25, 25);
-    }
-
     public int getXForCenteredText(String text) {
         int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         return (gp.getScreenWidth() - length) / 2;
     }
 
-//    public String[] getCurrentDialogue() {
-//        return currentDialogue;
-//    }
-//    public void setCurrentDialogue(String[] currentDialogue) {
-//        this.currentDialogue = currentDialogue;
-//    }
-//    public int getDialogueIndex() {
-//        return dialogueIndex;
-//    }
-//    public void setDialogueIndex(int dialogueIndex) {
-//        this.dialogueIndex = dialogueIndex;
-//    }
-
     public Font getArial_TILE() {
         return arial_TILE;
     }
-//    public Font getArial_80B() {
-//        return arial_80B;
-//    }
+    public BufferedImage getCreditScreen() {
+        return creditScreen;
+    }
 }
