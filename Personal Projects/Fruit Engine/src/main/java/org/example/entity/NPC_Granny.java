@@ -37,45 +37,51 @@ public class NPC_Granny extends Entity {
 
     public void setDialogue() {
         String dialogues[] = new String[4]; // Default loop size
-        BufferedImage portraits[] = new BufferedImage[4];
+        BufferedImage portraitsL[] = new BufferedImage[4];
+        BufferedImage portraitsR[] = new BufferedImage[4];
         BufferedImage background = gp.getPanelUI().getCreditScreen();
 
         // DEFAULT
         dialogues[0] = "Hello! So, you've arrived on \nthis island at last.";
-        portraits[0] = getPortrait1();
+        portraitsL[0] = getPortrait1();
+        portraitsR[0] = null;
         dialogues[1] = "When you have all three fruits, \ncome back.";
-        portraits[1] = getPortrait1();
+        portraitsL[1] = getPortrait1();
+        portraitsR[1] = null;
         dialogues[2] = "Have fun exploring, but be \nsafe.";
-        portraits[2] = getPortrait1();
+        portraitsL[2] = getPortrait1();
+        portraitsR[2] = null;
         dialogues[3] = "My dialogue loop is about to \nreset. It was nice chatting!";
-        portraits[3] = getPortrait1();
+        portraitsL[3] = getPortrait1();
+        portraitsR[3] = getPortrait1();
 
-        getObjDialogue().add(new Dialogue(background, dialogues, portraits, null));
+        getObjDialogue().add(new Dialogue(background, dialogues, portraitsL, portraitsR));
 
         // CONDITIONALS
-        portraits = new BufferedImage[] {null};
+        portraitsL = new BufferedImage[] {null};
+        portraitsR = new BufferedImage[] {null};
 
         dialogues = new String[] {"You know what they say about \nan apple a day!"};
-        getObjDialogue().add(new Dialogue(background, dialogues, portraits, null));
+        getObjDialogue().add(new Dialogue(background, dialogues, portraitsL, portraitsR));
 
         dialogues = new String[] {"Why does banana candy suck \nso much anyways?"};
-        getObjDialogue().add(new Dialogue(background, dialogues, portraits, null));
+        getObjDialogue().add(new Dialogue(background, dialogues, portraitsL, portraitsR));
 
         dialogues = new String[] {"The developer borrowed that \ncherry sprite from Pac-Man."};
-        getObjDialogue().add(new Dialogue(background, dialogues, portraits, null));
+        getObjDialogue().add(new Dialogue(background, dialogues, portraitsL, portraitsR));
 
         // Item combinations
-        portraits = new BufferedImage[] {getPortrait2()};
+        portraitsL = new BufferedImage[] {getPortrait2()};
         background = gp.getPanelUI().getCreditScreen();
 
         dialogues = new String[] {"Only the Apple left. Head \nNorth!"};
-        getObjDialogue().add(new Dialogue(background, dialogues, portraits, null));
+        getObjDialogue().add(new Dialogue(background, dialogues, portraitsL, portraitsR));
 
         dialogues = new String[] {"Only the Banana left. Head \nWest!"};
-        getObjDialogue().add(new Dialogue(background, dialogues, portraits, null));
+        getObjDialogue().add(new Dialogue(background, dialogues, portraitsL, portraitsR));
 
         dialogues = new String[] {"Only the Cherry left. Head \nEast!"};
-        getObjDialogue().add(new Dialogue(background, dialogues, portraits, null));
+        getObjDialogue().add(new Dialogue(background, dialogues, portraitsL, portraitsR));
     }
 
     public void speak() {
@@ -90,7 +96,6 @@ public class NPC_Granny extends Entity {
                 gp.getDialogueH().setCurrentD(getObjDialogue().get(6));
             } else if(gp.getPlayer().isHasCherry()) {
                 gp.getDialogueH().setCurrentD(getObjDialogue().get(5));
-
             } else {
                 gp.getDialogueH().setCurrentD(getObjDialogue().get(1));
             }
@@ -137,7 +142,7 @@ public class NPC_Granny extends Entity {
             if (i > 50 && i <= 75) {
                 setDirection("left");
             }
-            if (i > 75 && i <= 100) {
+            if (i > 75) {
                 setDirection("right");
             }
 

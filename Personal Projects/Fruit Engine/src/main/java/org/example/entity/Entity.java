@@ -156,7 +156,7 @@ public class Entity {
                 holding1 = null;
             }
 
-                // DRAW COLLISION
+                // DEBUG, draws collision
                 if(gp.getKeyH().isDebugOn()) {
                     g2.setColor(Color.red);
                     g2.fillRect(screenX + getSolidArea().x, screenY + getSolidArea().y, getSolidArea().width, getSolidArea().height);
@@ -182,40 +182,6 @@ public class Entity {
                 setDirection("left");
                 break;
         }
-    }
-
-    public String[] generateHandlerDialogue(int beginningIndex) {
-        String[] result = new String[1];
-        result[0] = getDialogues()[beginningIndex];
-
-        return result;
-    }
-    public String[] generateHandlerDialogue(int beginningIndex, int endingIndex) {
-        int totalMessages = (endingIndex - beginningIndex) + 1;
-        String[] result = new String[totalMessages];
-
-        for(int i = 0; i < totalMessages; i++) {
-            result[i] = getDialogues()[i + beginningIndex];
-        }
-
-        return result;
-    }
-
-    public BufferedImage[] generateHandlerPortraits(int beginningIndex) {
-        BufferedImage[] result = new BufferedImage[1];
-        result[0] = getPortraits()[beginningIndex];
-
-        return result;
-    }
-    public BufferedImage[] generateHandlerPortraits(int beginningIndex, int endingIndex) {
-        int totalPortraits = (endingIndex - beginningIndex) + 1;
-        BufferedImage[] result = new BufferedImage[totalPortraits];
-
-        for(int i = 0; i < totalPortraits; i++) {
-            result[i] = getPortraits()[i + beginningIndex];
-        }
-
-        return result;
     }
 
     public int getWorldX() {

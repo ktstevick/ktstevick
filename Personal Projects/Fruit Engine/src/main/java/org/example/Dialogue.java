@@ -8,6 +8,8 @@ public class Dialogue {
     private BufferedImage[] portraitsLeft;
     private BufferedImage[] portraitsRight;
 
+    private boolean isEnding = false;
+
     public Dialogue(BufferedImage background, String[] messages, BufferedImage[] portraitsLeft, BufferedImage[] portraitsRight) {
         this.background = background;
         this.messages = messages;
@@ -38,5 +40,12 @@ public class Dialogue {
     }
     public void setBackground(BufferedImage background) {
         this.background = background;
+    }
+
+    public boolean isEnding() {
+        return isEnding;
+    }
+    public void setIsEnding(boolean ending) {
+        isEnding = ending;
     }
 }

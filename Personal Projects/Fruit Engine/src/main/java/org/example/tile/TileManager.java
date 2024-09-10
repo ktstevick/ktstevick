@@ -99,6 +99,15 @@ public class TileManager {
                     worldY - gp.getTileSize() < gp.getPlayer().getWorldY() + gp.getPlayer().getScreenY()) {
 
                 g2.drawImage(tile[tileNum].getImage(), screenX, screenY, null);
+
+                // DEBUG
+                if(gp.getKeyH().isDebugOn()) {
+                    g2.drawRect(screenX, screenY, gp.getTileSize(), gp.getTileSize());
+                    int stringY = screenY + gp.getTileSize();
+
+                    g2.setFont(gp.getPanelUI().getArial_DEBUG());
+                    g2.drawString((worldX / gp.getTileSize()) + "x" + (worldY / gp.getTileSize()), screenX, stringY);
+                }
             }
 
             worldCol++;

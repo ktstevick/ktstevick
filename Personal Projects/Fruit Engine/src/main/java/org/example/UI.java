@@ -9,14 +9,17 @@ public class UI {
     private final GamePanel gp;
     private Graphics2D g2;
     private final BufferedImage creditScreen;
+
     private final Font arial_TILE;
     private final Font arial_80B;
+    private final Font arial_DEBUG;
 
     public UI(GamePanel gp) {
         this.gp = gp;
 
         arial_TILE = new Font("Arial", Font.PLAIN, gp.getTileSize());
         arial_80B = new Font("Arial", Font.BOLD, 80);
+        arial_DEBUG = new Font("Arial", Font.PLAIN, 10);
 
         // CREDITS
         BufferedImage image = null;
@@ -70,13 +73,16 @@ public class UI {
         g2.drawString(text, x, y);
     }
 
-    public int getXForCenteredText(String text) {
+    private int getXForCenteredText(String text) {
         int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         return (gp.getScreenWidth() - length) / 2;
     }
 
     public Font getArial_TILE() {
         return arial_TILE;
+    }
+    public Font getArial_DEBUG() {
+        return arial_DEBUG;
     }
     public BufferedImage getCreditScreen() {
         return creditScreen;

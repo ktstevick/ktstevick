@@ -6,8 +6,8 @@ import org.example.GamePanel;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-public class NPC_Boy extends Entity {
-    public NPC_Boy(GamePanel gp) {
+public class NPC_Girl extends Entity {
+    public NPC_Girl(GamePanel gp) {
         super(gp);
 
         setDirection("down");
@@ -18,20 +18,29 @@ public class NPC_Boy extends Entity {
     }
 
     public void getImage() {
-        setUp1(setup("/npc/boy_up_1"));
-        setUp2(setup("/npc/boy_up_2"));
-        setDown1(setup("/npc/boy_down_1"));
-        setDown2(setup("/npc/boy_down_2"));
-        setLeft1(setup("/npc/boy_left_1"));
-        setLeft2(setup("/npc/boy_left_2"));
-        setRight1(setup("/npc/boy_right_1"));
-        setRight2(setup("/npc/boy_right_2"));
+        setPortrait1(setup("/npc/girl_portrait_1"));
+
+        setUp1(setup("/npc/girl_up_1"));
+        setUp2(setup("/npc/girl_up_2"));
+        setDown1(setup("/npc/girl_down_1"));
+        setDown2(setup("/npc/girl_down_2"));
+        setLeft1(setup("/npc/girl_left_1"));
+        setLeft2(setup("/npc/girl_left_2"));
+        setRight1(setup("/npc/girl_right_1"));
+        setRight2(setup("/npc/girl_right_2"));
     }
 
     public void setDialogue() {
-        String[] dialogues = new String[] {"I ate a lot of candy!!"};
-        BufferedImage[] portraitsL = new BufferedImage[] {null};
-        BufferedImage[] portraitsR = new BufferedImage[] {null};
+        String[] dialogues = new String[2];
+        BufferedImage[] portraitsL = new BufferedImage[2];
+        BufferedImage[] portraitsR = new BufferedImage[2];
+
+        dialogues[0] = "That boy took my candy!";
+        portraitsL[0] = getPortrait1();
+        portraitsR[0] = null;
+        dialogues[1] = "I was really hungry too. \nWhat the heck!";
+        portraitsL[1] = getPortrait1();
+        portraitsR[1] = null;
 
         getObjDialogue().add(new Dialogue(null, dialogues, portraitsL, portraitsR));
     }
