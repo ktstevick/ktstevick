@@ -39,48 +39,63 @@ public class NPC_Granny extends Entity {
         String dialogues[] = new String[4]; // Default loop size
         BufferedImage portraitsL[] = new BufferedImage[4];
         BufferedImage portraitsR[] = new BufferedImage[4];
-        BufferedImage background = gp.getPanelUI().getCreditScreen();
 
         // DEFAULT
         dialogues[0] = "Hello! So, you've arrived on \nthis island at last.";
         portraitsL[0] = getPortrait1();
-        portraitsR[0] = null;
         dialogues[1] = "When you have all three fruits, \ncome back.";
         portraitsL[1] = getPortrait1();
-        portraitsR[1] = null;
         dialogues[2] = "Have fun exploring, but be \nsafe.";
         portraitsL[2] = getPortrait1();
-        portraitsR[2] = null;
         dialogues[3] = "My dialogue loop is about to \nreset. It was nice chatting!";
         portraitsL[3] = getPortrait1();
-        portraitsR[3] = getPortrait1();
 
-        getObjDialogue().add(new Dialogue(background, dialogues, portraitsL, portraitsR));
+        getObjDialogue().add(new Dialogue(null, dialogues, portraitsL, portraitsR));
 
         // CONDITIONALS
         portraitsL = new BufferedImage[] {null};
         portraitsR = new BufferedImage[] {null};
 
         dialogues = new String[] {"You know what they say about \nan apple a day!"};
-        getObjDialogue().add(new Dialogue(background, dialogues, portraitsL, portraitsR));
+        getObjDialogue().add(new Dialogue(null, dialogues, portraitsL, portraitsR));
 
         dialogues = new String[] {"Why does banana candy suck \nso much anyways?"};
-        getObjDialogue().add(new Dialogue(background, dialogues, portraitsL, portraitsR));
+        getObjDialogue().add(new Dialogue(null, dialogues, portraitsL, portraitsR));
 
         dialogues = new String[] {"The developer borrowed that \ncherry sprite from Pac-Man."};
-        getObjDialogue().add(new Dialogue(background, dialogues, portraitsL, portraitsR));
+        getObjDialogue().add(new Dialogue(null, dialogues, portraitsL, portraitsR));
 
         // Item combinations
-        portraitsL = new BufferedImage[] {getPortrait2()};
-        background = gp.getPanelUI().getCreditScreen();
+        portraitsL = new BufferedImage[] {getPortrait1()};
 
         dialogues = new String[] {"Only the Apple left. Head \nNorth!"};
-        getObjDialogue().add(new Dialogue(background, dialogues, portraitsL, portraitsR));
+        getObjDialogue().add(new Dialogue(null, dialogues, portraitsL, portraitsR));
 
         dialogues = new String[] {"Only the Banana left. Head \nWest!"};
-        getObjDialogue().add(new Dialogue(background, dialogues, portraitsL, portraitsR));
+        getObjDialogue().add(new Dialogue(null, dialogues, portraitsL, portraitsR));
 
         dialogues = new String[] {"Only the Cherry left. Head \nEast!"};
+        getObjDialogue().add(new Dialogue(null, dialogues, portraitsL, portraitsR));
+
+        // End of Game
+        dialogues = new String[4];
+        portraitsL = new BufferedImage[4];
+        portraitsR = new BufferedImage[4];
+        BufferedImage background = gp.getPanelUI().getBackgroundScreens()[0];
+
+        dialogues[0] = "So you've finally found the \nlegendary fruit.";
+        portraitsL[0] = getPortrait1();
+        portraitsR[0] = gp.getPlayer().getPortrait1();
+        dialogues[1] = "I'd love to tell you how quickly \nyou did it!";
+        portraitsL[1] = getPortrait1();
+        portraitsR[1] = gp.getPlayer().getPortrait1();
+        dialogues[2] = "Either way, congratulations!";
+        portraitsL[2] = getPortrait1();
+        portraitsR[2] = gp.getPlayer().getPortrait1();
+        dialogues[3] = "You won!";
+        portraitsL[3] = getPortrait1();
+        portraitsR[3] = gp.getPlayer().getPortrait1();
+
         getObjDialogue().add(new Dialogue(background, dialogues, portraitsL, portraitsR));
     }
 
@@ -124,29 +139,14 @@ public class NPC_Granny extends Entity {
 
             mentionedCherry = true;
         }
+
+        // End of Game
+        if(gp.getPlayer().isHasApple() && gp.getPlayer().isHasBanana() && gp.getPlayer().isHasCherry()) {
+            gp.getDialogueH().setCurrentD(getObjDialogue().get(7));
+        }
     }
 
     public void setAction() {
-        setActionLockCounter(getActionLockCounter() + 1);
-
-        if(getActionLockCounter() == 180) {
-            Random random = new Random();
-            int i = random.nextInt(100) + 1;
-
-            if (i <= 25) {
-                setDirection("up");
-            }
-            if (i > 25 && i <= 50) {
-                setDirection("down");
-            }
-            if (i > 50 && i <= 75) {
-                setDirection("left");
-            }
-            if (i > 75) {
-                setDirection("right");
-            }
-
-            setActionLockCounter(0);
-        }
+        turnRandomly(180);
     }
 }

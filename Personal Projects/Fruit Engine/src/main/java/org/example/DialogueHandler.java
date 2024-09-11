@@ -76,8 +76,8 @@ public class DialogueHandler {
         // Am I LEAVING DIALOGUE STATE?
         if (dialogueIndex >= currentD.getMessages().length) {
             // FADE TO BLACK
-            if(currentD.getBackground() != null) {
-                if(fadeCounter < FULL_FADE_MAX) {
+            if (currentD.getBackground() != null) {
+                if (fadeCounter < FULL_FADE_MAX) {
                     fadeCounter += 10; // Offset
                 } else {
                     leavingDialogue = true;
@@ -88,12 +88,11 @@ public class DialogueHandler {
             }
 
             // GENERAL FADE
-            if(leavingDialogue) {
+            if (leavingDialogue) {
                 if (fadeCounter > 0) {
                     drawBackground(fadeCounter);
                     fadeCounter -= 15;
-                    System.out.println("You made it!");
-                    System.out.println(fadeCounter);
+
                 } else if (fadeCounter == 0) {
                     // EXIT DIALOGUE STATE
                     gp.setGameState(gp.getPlayState());

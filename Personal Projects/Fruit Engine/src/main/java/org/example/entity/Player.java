@@ -43,6 +43,8 @@ public class Player extends Entity{
     }
 
     public void getPlayerImage() {
+        setPortrait1(setup("/player/nurse_portrait_1"));
+
         setUp1(setup("/player/nurse_up_1"));
         setUp2(setup("/player/nurse_up_2"));
         setDown1(setup("/player/nurse_down_1"));

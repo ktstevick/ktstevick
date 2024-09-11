@@ -11,7 +11,7 @@ public class NPC_Girl extends Entity {
         super(gp);
 
         setDirection("down");
-        setSpeed(0);
+        setSpeed(2);
 
         getImage();
         setDialogue();
@@ -35,43 +35,48 @@ public class NPC_Girl extends Entity {
         BufferedImage[] portraitsL = new BufferedImage[2];
         BufferedImage[] portraitsR = new BufferedImage[2];
 
+        // DEFAULT
         dialogues[0] = "That boy took my candy!";
         portraitsL[0] = getPortrait1();
-        portraitsR[0] = null;
+        portraitsR[0] = gp.getPlayer().getPortrait1();
         dialogues[1] = "I was really hungry too. \nWhat the heck!";
         portraitsL[1] = getPortrait1();
-        portraitsR[1] = null;
+        portraitsR[1] = gp.getPlayer().getPortrait1();
 
         getObjDialogue().add(new Dialogue(null, dialogues, portraitsL, portraitsR));
+
+        // CONDITIONALS
+        dialogues = new String[3];
+        portraitsL = new BufferedImage[3];
+        portraitsR = new BufferedImage[3];
+        BufferedImage background = gp.getPanelUI().getBackgroundScreens()[1];
+
+        dialogues[0] = "When I was a girl, a giant \nwave sank my island.";
+        portraitsL[0] = getPortrait1();
+        portraitsR[0] = gp.getPlayer().getPortrait1();
+        dialogues[1] = "I only survived by floating \naway on a giant banana.";
+        portraitsL[1] = getPortrait1();
+        portraitsR[1] = gp.getPlayer().getPortrait1();
+        dialogues[2] = "I owe that banana my life...";
+        portraitsL[2] = getPortrait1();
+        portraitsR[2] = gp.getPlayer().getPortrait1();
+
+        getObjDialogue().add(new Dialogue(background, dialogues, portraitsL, portraitsR));
     }
 
     public void speak() {
         turnToPlayer();
 
+        // DEFAULT
         gp.getDialogueH().setCurrentD(getObjDialogue().get(0));
+
+        // CONDITIONALS
+        if(gp.getPlayer().isHasBanana()) {
+            gp.getDialogueH().setCurrentD(getObjDialogue().get(1));
+        }
     }
 
     public void setAction() {
-        setActionLockCounter(getActionLockCounter() + 1);
-
-        if(getActionLockCounter() == 180) {
-            Random random = new Random();
-            int i = random.nextInt(100) + 1;
-
-            if (i <= 25) {
-                setDirection("up");
-            }
-            if (i > 25 && i <= 50) {
-                setDirection("down");
-            }
-            if (i > 50 && i <= 75) {
-                setDirection("left");
-            }
-            if (i > 75 && i <= 100) {
-                setDirection("right");
-            }
-
-            setActionLockCounter(0);
-        }
+        turnRandomly(60);
     }
 }

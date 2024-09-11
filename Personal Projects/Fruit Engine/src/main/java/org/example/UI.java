@@ -8,7 +8,8 @@ import java.io.IOException;
 public class UI {
     private final GamePanel gp;
     private Graphics2D g2;
-    private final BufferedImage creditScreen;
+    //    private final BufferedImage creditScreen;
+    private final BufferedImage[] backgroundScreens;
 
     private final Font arial_TILE;
     private final Font arial_80B;
@@ -22,15 +23,19 @@ public class UI {
         arial_DEBUG = new Font("Arial", Font.PLAIN, 10);
 
         // CREDITS
-        BufferedImage image = null;
+        BufferedImage[] backgroundScreens = new BufferedImage[2];
+
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/screens/credits_0.png"));
+//            image = ImageIO.read(getClass().getResourceAsStream("/screens/credits_0.png"));
+            backgroundScreens[0] = ImageIO.read(getClass().getResourceAsStream("/screens/background_station.png"));
+            backgroundScreens[1] = ImageIO.read(getClass().getResourceAsStream("/screens/background_sea.png"));
 
         } catch (IOException e) {
             System.out.println("Something happened! Error Code: 008");
         }
 
-        this.creditScreen = image;
+//        this.creditScreen = image;
+        this.backgroundScreens = backgroundScreens;
     }
 
     public void draw(Graphics2D g2) {
@@ -69,7 +74,7 @@ public class UI {
         int x = getXForCenteredText(text);
         int y = gp.getScreenHeight() / 2;
 
-        g2.drawImage(creditScreen, 0, 0, gp.getScreenWidth(), gp.getScreenHeight(), null);
+        g2.drawImage(backgroundScreens[0], 0, 0, gp.getScreenWidth(), gp.getScreenHeight(), null);
         g2.drawString(text, x, y);
     }
 
@@ -84,7 +89,10 @@ public class UI {
     public Font getArial_DEBUG() {
         return arial_DEBUG;
     }
-    public BufferedImage getCreditScreen() {
-        return creditScreen;
+//    public BufferedImage getCreditScreen() {
+//        return creditScreen;
+//    }
+    public BufferedImage[] getBackgroundScreens() {
+        return backgroundScreens;
     }
 }

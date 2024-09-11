@@ -11,7 +11,7 @@ public class NPC_Boy extends Entity {
         super(gp);
 
         setDirection("down");
-        setSpeed(0);
+        setSpeed(5);
 
         getImage();
         setDialogue();
@@ -29,9 +29,13 @@ public class NPC_Boy extends Entity {
     }
 
     public void setDialogue() {
-        String[] dialogues = new String[] {"I ate a lot of candy!!"};
-        BufferedImage[] portraitsL = new BufferedImage[] {null};
-        BufferedImage[] portraitsR = new BufferedImage[] {null};
+        String[] dialogues = new String[2];
+        BufferedImage[] portraitsL = new BufferedImage[2];
+        BufferedImage[] portraitsR = new BufferedImage[2];
+
+        // DEFAULT
+        dialogues[0] = "I ate a lot of candy!";
+        dialogues[1] = "LikeaLOTlotlot!!";
 
         getObjDialogue().add(new Dialogue(null, dialogues, portraitsL, portraitsR));
     }
@@ -43,26 +47,6 @@ public class NPC_Boy extends Entity {
     }
 
     public void setAction() {
-        setActionLockCounter(getActionLockCounter() + 1);
-
-        if(getActionLockCounter() == 180) {
-            Random random = new Random();
-            int i = random.nextInt(100) + 1;
-
-            if (i <= 25) {
-                setDirection("up");
-            }
-            if (i > 25 && i <= 50) {
-                setDirection("down");
-            }
-            if (i > 50 && i <= 75) {
-                setDirection("left");
-            }
-            if (i > 75 && i <= 100) {
-                setDirection("right");
-            }
-
-            setActionLockCounter(0);
-        }
+        turnRandomly(5);
     }
 }

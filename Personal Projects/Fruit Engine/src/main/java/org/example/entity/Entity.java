@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Entity {
     GamePanel gp;
@@ -181,6 +182,30 @@ public class Entity {
             case "right":
                 setDirection("left");
                 break;
+        }
+    }
+
+    public void turnRandomly(int frameCount) {
+        setActionLockCounter(getActionLockCounter() + 1);
+
+        if(getActionLockCounter() == frameCount) {
+            Random random = new Random();
+            int i = random.nextInt(100) + 1;
+
+            if (i <= 25) {
+                setDirection("up");
+            }
+            if (i > 25 && i <= 50) {
+                setDirection("down");
+            }
+            if (i > 50 && i <= 75) {
+                setDirection("left");
+            }
+            if (i > 75 && i <= 100) {
+                setDirection("right");
+            }
+
+            setActionLockCounter(0);
         }
     }
 
