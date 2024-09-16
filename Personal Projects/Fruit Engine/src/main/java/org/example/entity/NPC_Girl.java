@@ -7,6 +7,8 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 public class NPC_Girl extends Entity {
+    private boolean mentionedBanana = false;
+
     public NPC_Girl(GamePanel gp) {
         super(gp);
 
@@ -71,8 +73,9 @@ public class NPC_Girl extends Entity {
         gp.getDialogueH().setCurrentD(getObjDialogue().get(0));
 
         // CONDITIONALS
-        if(gp.getPlayer().isHasBanana()) {
+        if(gp.getPlayer().isHasBanana() && !mentionedBanana) {
             gp.getDialogueH().setCurrentD(getObjDialogue().get(1));
+            mentionedBanana = true;
         }
     }
 

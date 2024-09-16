@@ -1,6 +1,7 @@
 package org.example.entity;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import org.example.GamePanel;
 import org.example.KeyHandler;
@@ -13,6 +14,7 @@ public class Player extends Entity{
     private boolean hasApple;
     private boolean hasBanana;
     private boolean hasCherry;
+    private ArrayList<Entity> inventory = new ArrayList<>();
 
     public Player(GamePanel gp, KeyHandler keyH) {
         super(gp);

@@ -40,10 +40,11 @@ public class TileManager {
     }
 
     public void getTileImage() {
+            // Gaps for current map readability
             setup(10, "grass_0", false);
-//            setup(11, "wall_0", true);
+
             setup(12, "water_0", true);
-//            setup(13, "dirt_0", false);
+
             setup(14, "bush_0", true);
             setup(15, "path_0", false);
     }
@@ -99,6 +100,8 @@ public class TileManager {
                     worldY - gp.getTileSize() < gp.getPlayer().getWorldY() + gp.getPlayer().getScreenY()) {
 
                 g2.drawImage(tile[tileNum].getImage(), screenX, screenY, null);
+
+                // Second tile drawn on top as animation w/ conditional here?
 
                 // DEBUG
                 if(gp.getKeyH().isDebugOn()) {

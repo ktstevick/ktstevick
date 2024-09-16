@@ -2,9 +2,12 @@ package org.example.object;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 import org.example.GamePanel;
 import org.example.UtilityTool;
+
+import javax.imageio.ImageIO;
 
 public class SuperObject {
     private BufferedImage image;
@@ -29,7 +32,6 @@ public class SuperObject {
             g2.drawImage(image, screenX, screenY, gp.getTileSize(), gp.getTileSize(), null);
         }
     }
-
 
     public BufferedImage getImage() {
         return image;
@@ -85,6 +87,4 @@ public class SuperObject {
     public void setUTool(UtilityTool uTool) {
         this.uTool = uTool;
     }
-
-
 }

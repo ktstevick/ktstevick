@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class Entity {
     GamePanel gp;
-    private UtilityTool uTool = new UtilityTool();
+    private final UtilityTool uTool = new UtilityTool();
 
     private int worldX;
     private int worldY;
