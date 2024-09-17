@@ -34,7 +34,7 @@ public class TileManager {
             setup(11, "flower_0", "flower_1", false); // Animated
             setup(12, "bush_0", true);
 
-            setup(13, "water_0", false); // Overhead proof of concept
+            setup(13, "bush_0", false); // Overhead proof of concept
                 tile[13].setOverhead(true);
 
             setup(14, "water_0", true);
@@ -124,8 +124,13 @@ public class TileManager {
 
                 // DEBUG
                 if(gp.getKeyH().isDebugOn()) {
-                    g2.drawRect(screenX, screenY, gp.getTileSize(), gp.getTileSize());
                     int stringY = screenY + gp.getTileSize();
+
+                    if(tile[tileNum].isCollision()) {
+                        g2.fillRect(screenX, screenY, gp.getTileSize(), gp.getTileSize());
+                    } else {
+                        g2.drawRect(screenX, screenY, gp.getTileSize(), gp.getTileSize());
+                    }
 
                     g2.setFont(gp.getPanelUI().getArial_DEBUG());
                     g2.drawString((worldX / gp.getTileSize()) + "x" + (worldY / gp.getTileSize()), screenX, stringY);

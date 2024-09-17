@@ -14,7 +14,6 @@ public class Player extends Entity{
     private boolean hasApple;
     private boolean hasBanana;
     private boolean hasCherry;
-    private ArrayList<Entity> inventory = new ArrayList<>();
 
     public Player(GamePanel gp, KeyHandler keyH) {
         super(gp);
@@ -45,17 +44,18 @@ public class Player extends Entity{
     }
 
     public void getPlayerImage() {
-        setPortrait1(setup("/player/nurse_portrait_1"));
+        setPortrait1(setup("/player/clark_portrait_1"));
 
-        setUp1(setup("/player/nurse_up_1"));
-        setUp2(setup("/player/nurse_up_2"));
-        setDown1(setup("/player/nurse_down_1"));
-        setDown2(setup("/player/nurse_down_2"));
-        setLeft1(setup("/player/nurse_left_1"));
-        setLeft2(setup("/player/nurse_left_2"));
-        setRight1(setup("/player/nurse_right_1"));
-        setRight2(setup("/player/nurse_right_2"));
-        setPickup1(setup("/tiles/bush_0"));
+        setUp1(setup("/player/clark_up_1"));
+        setUp2(setup("/player/clark_up_2"));
+        setDown1(setup("/player/clark_down_1"));
+        setDown2(setup("/player/clark_down_2"));
+        setLeft1(setup("/player/clark_left_1"));
+        setLeft2(setup("/player/clark_left_2"));
+        setRight1(setup("/player/clark_right_1"));
+        setRight2(setup("/player/clark_right_2"));
+
+        setPickup1(setup("/player/clark_pickup_1"));
     }
 
     public void update() {
@@ -74,7 +74,7 @@ public class Player extends Entity{
 
                 // SPEED
                 if (keyH.isShiftPressed()) {
-                    setSpeed(DEFAULT_SPEED * 2);
+                    setSpeed(DEFAULT_SPEED + 2);
                 } else {
                     setSpeed(DEFAULT_SPEED);
                 }
