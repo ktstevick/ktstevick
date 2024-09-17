@@ -99,9 +99,9 @@ public class GamePanel extends JPanel implements Runnable {
     public void update() {
         if(gameState == PLAY_STATE) {
             player.update();
-            for(int i = 0; i < npc.length; i++) {
-                if(npc[i] != null) {
-                    npc[i].update();
+            for (Entity entity : npc) {
+                if (entity != null) {
+                    entity.update();
                 }
             }
         }
@@ -119,17 +119,25 @@ public class GamePanel extends JPanel implements Runnable {
 
         // DRAW
         tileM.draw(g2);
-        for(int i = 0; i < obj.length; i++) {
-            if(obj[i] != null) {
-                obj[i].draw(g2, this);
+
+        for (SuperObject superObject : obj) {
+            if (superObject != null) {
+                superObject.draw(g2, this);
             }
         }
-        for(int i = 0; i < npc.length; i++) {
-            if(npc[i] != null) {
-                npc[i].draw(g2);
+
+        for (Entity entity : npc) {
+            if (entity != null) {
+                entity.draw(g2);
             }
         }
+
         player.draw(g2);
+
+        if(!keyH.isDebugOn()) {
+            tileM.drawOverhead(g2);
+        }
+
         ui.draw(g2);
 
         // DEBUG
