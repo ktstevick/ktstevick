@@ -2,12 +2,10 @@
 
 ## About
 
-My name is KT Stevick - I'm a software developer and artist originally from the Chicago area. I'm gonna talk more about myself soon. My repositories are listed below.
+My name is KT Stevick - I'm a software developer and artist originally from the Chicago area. Autistic, artistic, avant-garde and atavistic. My repositories are listed below.
 
 ## ktstevick
-```
 This is the main repository I work from and like to present. It includes my formal Tech Elevator capstones and team projects, as well as all of my personal projects. Currently, the other repos are all various forms of website deployment, the proper code for which can be accessed here.
-```
 
 ### Personal Projects
 This folder contains all of the projects I've made purely for fun. I've been working 40+ hours a week, and spend the majority of my free time learning about and working on these kinds of things. Since they're personal projects, they're a little more verbose in the comments than I'd like, but otherwise accurately represent the organization, quality, and consistency I'd strive for in production code. There are several Java projects that need to be run via IDE, and a few full-stack web apps that can be run internally or viewed through a browser.
@@ -29,20 +27,14 @@ I'm very grateful for these projects and learned more than I can say from each o
 - [**Second Capstone**](https://github.com/ktstevick/ktstevick/tree/main/TE%20Capstones/Second%20Capstone%20-%20Banking%20App%20and%20API) - **TEnmo App;** teammate was sick, programmed mostly solo, emulates Venmo and is my first official RESTful API implementation
 - [**Third Capstone**](https://github.com/ktstevick/ktstevick/tree/main/TE%20Capstones/Third%20Capstone%20-%20Plants%20Website%20and%20API) - **Plants App;** was part of a small team of developers who worked closely with a Product Owner and Scrum Master over two weeks, Agile development cycle, accomplished MVP in ten days
 
-
 ## website
-```
 This repo was made to serve my portfolio site to https://ktstevick.com
-```
 
 ## ktstevick.github.io
-```
 This repo was made to enable web app hosting via GitHub Pages
-```
 
 ## test-site
-```
-This repo contains the actual code that gets passed to be presented on GitHub Pages
-```
+This repo contains the actual code that gets passed to be presented on GitHub Pages. Still workshopping the name
+
 
 
