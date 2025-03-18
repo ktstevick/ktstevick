@@ -1,4 +1,4 @@
-package dao;
+package com.teamsapp.dao;
 
 public interface PokemonDao {
 }

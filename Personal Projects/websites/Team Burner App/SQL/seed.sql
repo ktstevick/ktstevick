@@ -21,6 +21,7 @@ CREATE TABLE pokemon (
     nickname varchar(50) NULL,
     item varchar(50) NULL,
     ability varchar(50) NOT NULL,
+    tera_type varchar(50) NOT NULL,
     evs varchar(50) NULL,
     ivs varchar(50) NULL,
     nature varchar(50) NOT NULL,
@@ -42,15 +43,15 @@ INSERT INTO note (team_id, text) VALUES
     ('1', 'Test text. This is a test note.'),
     ('1', 'This is another test note. Take two, if you will.');
 
-INSERT INTO pokemon (team_id, name, ability, nature) VALUES
-    ('1', 'Miraidon', 'Hadron Engine', 'Modest'),
-    ('1', 'Farigiraf', 'Armor Tail', 'Bold'),
-    ('1', 'Iron Hands', 'Quark Drive', 'Adamant'),
-    ('1', 'Ogerpon-H', 'Mold Breaker', 'Hasty'),
-    ('1', 'Urshifu-R', 'Unseen Fist', 'Jolly');
+INSERT INTO pokemon (team_id, name, ability, tera_type, nature) VALUES
+    ('1', 'Miraidon', 'Hadron Engine', 'Electric', 'Modest'),
+    ('1', 'Farigiraf', 'Armor Tail', 'Dark', 'Bold'),
+    ('1', 'Iron Hands', 'Quark Drive', 'Bug', 'Adamant'),
+    ('1', 'Ogerpon-H', 'Mold Breaker', 'Fire', 'Hasty'),
+    ('1', 'Urshifu-R', 'Unseen Fist', 'Stellar', 'Jolly');
 
-INSERT INTO pokemon (team_id, name, nickname, item, ability, evs, ivs, nature, move_1, move_2, move_3, move_4, is_shiny) VALUES
-    ('1', 'Whimsicott', 'Ice Spice', 'Covert Cloak', 'Prankster', '252 HP / 252 Def / 4 SpDef', '0 Atk', 'Bold', 'Tailwind', 'Encore', 'Moonblast', 'Protect', TRUE);
+INSERT INTO pokemon (team_id, name, nickname, item, ability, tera_type, evs, ivs, nature, move_1, move_2, move_3, move_4, is_shiny) VALUES
+    ('1', 'Whimsicott', 'Ice Spice', 'Covert Cloak', 'Prankster', 'Ghost', '252 HP / 252 Def / 4 SpDef', '0 Atk', 'Bold', 'Tailwind', 'Encore', 'Moonblast', 'Protect', TRUE);
 
 COMMIT;
 

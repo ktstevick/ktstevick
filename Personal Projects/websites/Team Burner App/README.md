@@ -10,6 +10,8 @@ This app exists to make organizing and accessing the information associated with
 
 The front end is likely going to be a single page web app. The back end will involve a SQL database and an API. Nothing too crazy. Pokemon teams are already shared via text, so I don't expect the actual programming to be too involved.
 
+3/18 -  "roster" column in "team" table seems redundant, Tera Type needs to be added. Leaving as is for now. Today we're rigging the Java!
+
 ### Context
 We all live in a Pokemon world!
 
