@@ -7,6 +7,6 @@ public interface NoteDao {
     Note getNoteById(int noteId);
     List<Note> getNotesByTeamId(int teamId);
 
-    Note createNote(Note note);
-    Note updateNote(Note note);
+//    Note createNote(Note note);
+//    Note updateNote(Note note);
 }

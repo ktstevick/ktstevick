@@ -36,11 +36,40 @@ public class JdbcTeamDao implements TeamDao{
         return team;
     }
 
-//    @Override
-//    public Team getTeamByName(String teamName) { }
-//
-//    @Override
-//    public List<Team> getAllTeams() { }
+    @Override
+    public Team getTeamByName(String teamName) {
+        Team team = null;
+        String sql = "SELECT * FROM team WHERE name = ?;";
+
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, teamName);
+            while (results.next()) {
+                team = mapRowToTeam(results);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect somehow!", e);
+        }
+
+        return team;
+    }
+
+    @Override
+    public List<Team> getAllTeams() {
+        List<Team> teams = new ArrayList<>();
+        String sql = "SELECT * FROM team;";
+
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+            while (results.next()) {
+                Team team = mapRowToTeam(results);
+                teams.add(team);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect somehow!", e);
+        }
+
+        return teams;
+    }
 
 //    @Override
 //    public Team createTeam(Team team) { }

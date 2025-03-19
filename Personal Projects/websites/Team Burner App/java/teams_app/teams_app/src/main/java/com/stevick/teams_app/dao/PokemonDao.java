@@ -5,8 +5,8 @@ import java.util.List;
 
 public interface PokemonDao {
     Pokemon getPokemonById(int pokemonId);
-    List<Pokemon> getPokemonByTeamId(int teamId);
+//    List<Pokemon> getPokemonByTeamId(int teamId);
 
-    Pokemon createPokemon(Pokemon pokemon);
-    Pokemon updatePokemon(Pokemon pokemon);
+//    Pokemon createPokemon(Pokemon pokemon);
+//    Pokemon updatePokemon(Pokemon pokemon);
 }
